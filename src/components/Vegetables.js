@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './shared/Footer'
+// import Footer from './shared/Footer'
 import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
@@ -28,7 +28,7 @@ function Vegetables() {
 			<div className="w3l_banner_nav_right_banner3_btm">
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/18.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/18.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -43,7 +43,7 @@ function Vegetables() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/19.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/19.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -58,7 +58,7 @@ function Vegetables() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/20.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/20.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -79,12 +79,12 @@ function Vegetables() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive"/></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive"/></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/29.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/29.png" alt=" " className="img-responsive" /></Link>
 											<p>Fresh Bananas (1 kg)</p>
 											<h4>$10.00 <span>$12.00</span></h4>
 										</div>
@@ -114,13 +114,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/30.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/30.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh cauliflower (2 no's)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -150,13 +150,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/31.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/31.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh brinjal bharta (1 kg)</p>
 											<h4>$2.00 <span>$3.00</span></h4>
 										</div>
@@ -186,13 +186,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/32.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/32.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh sweet lime (500 gm)</p>
 											<h4>$6.00 <span>$7.00</span></h4>
 										</div>
@@ -225,13 +225,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/9.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/9.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh spinach (palak)</p>
 											<h4>$2.00 <span>$3.00</span></h4>
 										</div>
@@ -261,13 +261,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/10.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/10.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh mango dasheri (1 kg)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -296,12 +296,12 @@ function Vegetables() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/11.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/11.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh apple red (1 kg)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -331,13 +331,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/12.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/12.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh broccoli (500 gm)</p>
 											<h4>$4.00 <span>$6.00</span></h4>
 										</div>
@@ -370,13 +370,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/33.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/33.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh basket onion (1 kg)</p>
 											<h4>$5.00 <span>$7.00</span></h4>
 										</div>
@@ -406,13 +406,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/34.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/34.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh muskmelon (1 kg)</p>
 											<h4>$4.00 <span>$5.00</span></h4>
 										</div>
@@ -441,12 +441,12 @@ function Vegetables() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/35.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/35.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh mushroom (500 ml)</p>
 											<h4>$11.00 <span>$15.00</span></h4>
 										</div>
@@ -476,13 +476,13 @@ function Vegetables() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/36.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/36.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh strawberry (1 pc)</p>
 											<h4>$7.00 <span>$9.00</span></h4>
 										</div>
@@ -515,7 +515,7 @@ function Vegetables() {
 		<div className="clearfix"></div>
 	</div>
 {/* <!-- //banner --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

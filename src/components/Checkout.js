@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Checkout() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -42,7 +42,7 @@ function Checkout() {
 					</thead>
 					<tbody><tr className="rem1">
 						<td className="invert">1</td>
-						<td className="invert-image"><Link to="single.html"><img src="images/1.png" alt=" " className="img-responsive"/></Link></td>
+						<td className="invert-image"><Link to="single.html"><img src="../Assets/images/1.png" alt=" " className="img-responsive"/></Link></td>
 						<td className="invert">
 							 <div className="quantity"> 
 								<div className="quantity-select">                           
@@ -64,7 +64,7 @@ function Checkout() {
 					</tr>
 					<tr className="rem2">
 						<td className="invert">2</td>
-						<td className="invert-image"><Link to="single.html"><img src="images/3.png" alt=" " className="img-responsive"/></Link></td>
+						<td className="invert-image"><Link to="single.html"><img src="../Assets/images/3.png" alt=" " className="img-responsive"/></Link></td>
 						<td className="invert">
 							 <div className="quantity"> 
 								<div className="quantity-select">                           
@@ -86,7 +86,7 @@ function Checkout() {
 					</tr>
 					<tr className="rem3">
 						<td className="invert">3</td>
-						<td className="invert-image"><Link to="single.html"><img src="images/2.png" alt=" " className="img-responsive"/></Link></td>
+						<td className="invert-image"><Link to="single.html"><img src="../Assets/images/2.png" alt=" " className="img-responsive"/></Link></td>
 						<td className="invert">
 							 <div className="quantity"> 
 								<div className="quantity-select">                           
@@ -178,7 +178,7 @@ function Checkout() {
 		<div className="clearfix"></div>
 	</div>
 {/* <!-- //banner --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
     
   )

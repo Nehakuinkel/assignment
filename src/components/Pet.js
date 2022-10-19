@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Pet() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -34,13 +34,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/57.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/57.png" alt=" " className="img-responsive" /></Link>
 											<p>can - tuna for cats (400 gm)</p>
 											<h4>$8.00 <span>$10.00</span></h4>
 										</div>
@@ -70,13 +70,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/58.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/58.png" alt=" " className="img-responsive" /></Link>
 											<p>junior pet food (90 gm)</p>
 											<h4>$5.00 <span>$6.00</span></h4>
 										</div>
@@ -106,13 +106,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/4.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/4.png" alt=" " className="img-responsive" /></Link>
 											<p>dogs food - junior (4 Kg)</p>
 											<h4>$9.00 <span>$11.00</span></h4>
 										</div>
@@ -142,13 +142,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/59.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/59.png" alt=" " className="img-responsive" /></Link>
 											<p>gravy food for dogs (20 kg)</p>
 											<h4>$15.00 <span>$18.00</span></h4>
 										</div>
@@ -181,13 +181,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/60.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/60.png" alt=" " className="img-responsive" /></Link>
 											<p>meat for dogs (100 gm)</p>
 											<h4>$8.00 <span>$10.00</span></h4>
 										</div>
@@ -217,13 +217,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/61.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/61.png" alt=" " className="img-responsive" /></Link>
 											<p>weekly pack (200 gm)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -252,12 +252,12 @@ function Pet() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/62.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/62.png" alt=" " className="img-responsive" /></Link>
 											<p>dog munchies (500 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -287,13 +287,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/63.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/63.png" alt=" " className="img-responsive" /></Link>
 											<p>nutrition for cats (90 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -326,13 +326,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/25.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/25.png" alt=" " className="img-responsive" /></Link>
 											<p>food for adult dogs (80 gms)</p>
 											<h4>$3.00 <span>$4.00</span></h4>
 										</div>
@@ -362,13 +362,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/26.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/26.png" alt=" " className="img-responsive" /></Link>
 											<p>young adult dogs (1.2 kg)</p>
 											<h4>$6.00 <span>$10.00</span></h4>
 										</div>
@@ -397,12 +397,12 @@ function Pet() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/27.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/27.png" alt=" " className="img-responsive" /></Link>
 											<p>cat food ocean fish (1.4 kg)</p>
 											<h4>$6.00 <span>$7.00</span></h4>
 										</div>
@@ -432,13 +432,13 @@ function Pet() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/28.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/28.png" alt=" " className="img-responsive" /></Link>
 											<p>chicken in jelly can (400 gm)</p>
 											<h4>$7.00 <span>$9.00</span></h4>
 										</div>
@@ -471,7 +471,7 @@ function Pet() {
 		<div className="clearfix"></div>
 	</div>
 {/* <!-- //banner --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

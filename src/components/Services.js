@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Services() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -34,13 +34,13 @@ function Services() {
 				</div>
 				<div className="col-md-7 w3ls_service_grid_right">
 					<div className="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/18.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/18.jpg" alt=" " className="img-responsive" />
 					</div>
 					<div className="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/19.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/19.jpg" alt=" " className="img-responsive" />
 					</div>
 					<div className="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/20.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/20.jpg" alt=" " className="img-responsive" />
 					</div>
 					<div className="clearfix"> </div>
 				</div>
@@ -48,7 +48,7 @@ function Services() {
 			</div>
 			<div className="w3ls_service_grids1">
 				<div className="col-md-6 w3ls_service_grids1_left">
-					<img src="images/4.jpg" alt=" " className="img-responsive" />
+					<img src="../Assets/images/4.jpg" alt=" " className="img-responsive" />
 				</div>
 				<div className="col-md-6 w3ls_service_grids1_right">
 					<ul>
@@ -140,7 +140,7 @@ function Services() {
 		</div>
 	</div>
 {/* <!-- //newsletter-top-serv-btm --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Navbarleft() {
   return (
-    <div>
+    <>
         <div className="w3l_banner_nav_left">
 			<nav className="navbar nav_bottom">
 			 {/* <!-- Brand and toggle get grouped for better mobile display --> */}
@@ -62,7 +62,7 @@ function Navbarleft() {
                  {/* <!-- /.navbar-collapse --> */}
 			</nav>
 		</div>
-    </div>
+    </>
   )
 }
 

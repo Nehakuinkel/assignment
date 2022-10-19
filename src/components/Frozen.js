@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Frozen() {
   return (
    <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -28,7 +28,7 @@ function Frozen() {
 			<div className="w3l_banner_nav_right_banner3_btm">
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/24.jpg" alt=" " className="img-responsive"/>
+						<img src="../Assets/images/24.jpg" alt=" " className="img-responsive"/>
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -43,7 +43,7 @@ function Frozen() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/29.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/29.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -58,7 +58,7 @@ function Frozen() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/30.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/30.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -79,12 +79,12 @@ function Frozen() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive"/></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive"/></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/64.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/64.png" alt=" " className="img-responsive" /></Link>
 											<p>pepper salami (250 gm)</p>
 											<h4>$10.00 <span>$12.00</span></h4>
 										</div>
@@ -114,13 +114,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/65.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/65.png" alt=" " className="img-responsive" /></Link>
 											<p>sumeru green pees (500 gm)</p>
 											<h4>$9.00 <span>$11.00</span></h4>
 										</div>
@@ -150,13 +150,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/66.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/66.png" alt=" " className="img-responsive" /></Link>
 											<p>tikka chicken (300 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -186,13 +186,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/67.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/67.png" alt=" " className="img-responsive" /></Link>
 											<p>mixed vegetables (500 gm)</p>
 											<h4>$6.00 <span>$7.00</span></h4>
 										</div>
@@ -225,13 +225,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/68.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/68.png" alt=" " className="img-responsive" /></Link>
 											<p>mango pulp (800 gm)</p>
 											<h4>$9.00 <span>$11.00</span></h4>
 										</div>
@@ -261,13 +261,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/69.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/69.png" alt=" " className="img-responsive" /></Link>
 											<p>kesar mango pulp (800 gm)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -296,12 +296,12 @@ function Frozen() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/70.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/70.png" alt=" " className="img-responsive" /></Link>
 											<p>frozen sweet corn (250 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -331,13 +331,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/71.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/71.png" alt=" " className="img-responsive" /></Link>
 											<p>chicken nuggets (1 kg)</p>
 											<h4>$4.00 <span>$6.00</span></h4>
 										</div>
@@ -370,13 +370,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/72.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/72.png" alt=" " className="img-responsive" /></Link>
 											<p>garlic fingers (400 gm)</p>
 											<h4>$5.00 <span>$7.00</span></h4>
 										</div>
@@ -406,13 +406,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/73.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/73.png" alt=" " className="img-responsive" /></Link>
 											<p>catch fish finger (200 gm)</p>
 											<h4>$8.00 <span>$10.00</span></h4>
 										</div>
@@ -441,12 +441,12 @@ function Frozen() {
 					<div className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/74.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/74.png" alt=" " className="img-responsive" /></Link>
 											<p>sumeru chicken (500 ml)</p>
 											<h4>$11.00 <span>$15.00</span></h4>
 										</div>
@@ -476,13 +476,13 @@ function Frozen() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/75.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single"><img src="../Assets/images/75.png" alt=" " className="img-responsive" /></Link>
 											<p>veggie fingers (400 gm)</p>
 											<h4>$7.00 <span>$9.00</span></h4>
 										</div>
@@ -515,7 +515,7 @@ function Frozen() {
 		<div className="clearfix"></div>
 	</div>
 {/* <!-- //banner --> */}
-    <Footer/>
+    {/* <Footer/> */}
    </>
   )
 }

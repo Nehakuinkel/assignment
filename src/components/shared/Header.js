@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import $ from 'jquery';
-import About from '../About';
-import Events from '../Events';
 
 function Header () {
   return (
@@ -85,10 +83,6 @@ function Header () {
 			<div className="clearfix"> </div>
 		</div>
 	</div>
-	<Routes>
-		<Route path="about" element={<About/>}/>
-		<Route path="events" element={<Events/>}/>
-	</Routes>
     </div>
 
   )

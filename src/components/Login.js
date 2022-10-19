@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Login() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -101,7 +101,7 @@ function Login() {
 		</div>
 	</div>
 {/* <!-- //newsletter-top-serv-btm --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

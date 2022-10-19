@@ -1,13 +1,12 @@
-import {  
+import { 
   Routes, 
-  Route, 
-  Navigate } 
+  Route
+} 
   from "react-router-dom";
-  
-import Index from "./components/Index";
+import Main from "./components/shared/Main";
 import React from 'react'
-// import About from "./components/About";
-// import Bread from "./components/Bread";
+import About from "./components/About";
+import Bread from "./components/Bread";
 import Checkout from "./components/Bread";
 import Drinks from "./components/Drinks";
 import Events from "./components/Events";
@@ -29,12 +28,12 @@ import Vegetables from "./components/Vegetables";
 function Routing() {
   return (
       <Routes>
-        <Route path='/' element={<Index/>}/>
-        {/* <Route path="about" element={<About/>}/> */}
-        {/* <Route path="bread" element={<Bread/>}/> */}
+        <Route path='/' element={<Main/>}/>
+        <Route path="about" element={<About/>}/>
+        <Route path="bread" element={<Bread/>}/>
         <Route path="checkout" element={<Checkout/>}/>
         <Route path="drinks" element={<Drinks/>}/>
-        {/* <Route path="events" element={<Events/>}/> */}
+        <Route path="events" element={<Events/>}/>
         <Route path="faqs" element={<Faqs/>}/>
         <Route path="frozen" element={<Frozen/>}/>
         <Route path="household" element={<Household/>}/>
@@ -49,18 +48,6 @@ function Routing() {
         <Route path="shortcodes" element={<ShortCodes/>}/>
         <Route path="single" element={<Single/>}/>
         <Route path="vegetables" element={<Vegetables/>}/>
-
-
-        {/* <Route path="signin" element={<Signin/>}>
-          <Route path = "admin" element={<Admin/>}/>
-          <Route path = "user" element={<User/>}/>
-        </Route>
-
-        <Route path="signin/:userName" element={<Dashboard/>}/>
-        <Route path="docs/:docName" element={<DynamicPage/>}/> */}
-
-        <Route path="/" element = {<Navigate replace to="/"/>}/>
-
       </Routes>
   )
 }

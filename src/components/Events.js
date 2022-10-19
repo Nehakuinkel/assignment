@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Events() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -109,7 +109,7 @@ function Events() {
 						</div>
 					</div>
 					<div className="col-md-8 events_bottom_left2">	
-						<img src="images/15.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/15.jpg" alt=" " className="img-responsive" />
 						<h4>ut aut reiciendis facere possimus</h4>
 						<ul>
 							<li><i className="fa fa-clock-o" aria-hidden="true"></i>3:00 PM</li>
@@ -129,7 +129,7 @@ function Events() {
 						</div>
 					</div>
 					<div className="col-md-8 events_bottom_left2">	
-						<img src="images/19.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/19.jpg" alt=" " className="img-responsive" />
 						<h4>maxime placeat facere possimus</h4>
 						<ul>
 							<li><i className="fa fa-clock-o" aria-hidden="true"></i>3:30 PM</li>
@@ -149,7 +149,7 @@ function Events() {
 		<div className="clearfix"></div>
 	</div>
 {/* <!-- //banner --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

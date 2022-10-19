@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Payment() {
   return (
    <>
-   <Header/>
+   {/* <Header/> */}
    {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -116,7 +116,7 @@ function Payment() {
                     <div id="tab4" className="tab-grid" >
 							<div className="row">
                         {/* <div className="col-md-6">
-                            <img className="pp-img" src="images/paypal.png" alt="Image Alternative text" title="Image Title"/>
+                            <img className="pp-img" src="../Assets/images/paypal.png" alt="Image Alternative text" title="Image Title"/>
                             <p>Important: You will be redirected to PayPal's website to securely complete your payment.</p><a className="btn btn-primary">Checkout via Paypal</a>	
                         </div> */}
                         <div className="col-md-6">
@@ -169,7 +169,7 @@ function Payment() {
 	</div>
 {/* <!-- //banner --> */}
 
-   <Footer/>
+   {/* <Footer/> */}
    </>
   )
 }

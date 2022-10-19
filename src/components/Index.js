@@ -1,17 +1,13 @@
 import React from 'react'
-import Header from './shared/Header'
+// import Header from './shared/Header'
 import Main from './shared/Main'
-import Footer from './shared/Footer'
-import About from './About'
+// import Footer from './shared/Footer'
 
 
 function Index() {
   return (
    <>
-    <Header/>
     <Main/>
-    <Footer/>
-    <About/>
    </>
   )
 }

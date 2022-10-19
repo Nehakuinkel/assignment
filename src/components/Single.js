@@ -1,13 +1,13 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Single() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
@@ -90,13 +90,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/5.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/5.png" alt=" " className="img-responsive" /></Link>
 											<p>knorr instant soup (100 gm)</p>
 											<h4>$3.00 <span>$5.00</span></h4>
 										</div>
@@ -126,13 +126,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/6.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/6.png" alt=" " className="img-responsive" /></Link>
 											<p>chings noodles (75 gm)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -162,13 +162,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/7.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/7.png" alt=" " className="img-responsive" /></Link>
 											<p>lahsun sev (150 gm)</p>
 											<h4>$3.00 <span>$5.00</span></h4>
 										</div>
@@ -198,13 +198,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/8.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/8.png" alt=" " className="img-responsive" /></Link>
 											<p>premium bake rusk (300 gm)</p>
 											<h4>$5.00 <span>$7.00</span></h4>
 										</div>
@@ -238,13 +238,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/9.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/9.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh spinach (palak)</p>
 											<h4>$2.00 <span>$3.00</span></h4>
 										</div>
@@ -274,13 +274,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/10.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/10.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh mango dasheri (1 kg)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -309,12 +309,12 @@ function Single() {
 					<div className="col-md-3 w3ls_w3l_banner_left">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/11.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/11.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh apple red (1 kg)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -344,13 +344,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/12.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/12.png" alt=" " className="img-responsive" /></Link>
 											<p>fresh broccoli (500 gm)</p>
 											<h4>$4.00 <span>$6.00</span></h4>
 										</div>
@@ -384,13 +384,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/13.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/13.png" alt=" " className="img-responsive" /></Link>
 											<p>mixed fruit juice (1 ltr)</p>
 											<h4>$3.00 <span>$4.00</span></h4>
 										</div>
@@ -420,13 +420,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/14.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/14.png" alt=" " className="img-responsive" /></Link>
 											<p>prune juice - sunsweet (1 ltr)</p>
 											<h4>$4.00 <span>$5.00</span></h4>
 										</div>
@@ -455,12 +455,12 @@ function Single() {
 					<div className="col-md-3 w3ls_w3l_banner_left">
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/15.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/15.png" alt=" " className="img-responsive" /></Link>
 											<p>coco cola zero can (330 ml)</p>
 											<h4>$3.00 <span>$5.00</span></h4>
 										</div>
@@ -490,13 +490,13 @@ function Single() {
 						<div className="hover14 column">
 						<div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/16.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/16.png" alt=" " className="img-responsive" /></Link>
 											<p>sprite bottle (2 ltr)</p>
 											<h4>$3.00 <span>$4.00</span></h4>
 										</div>
@@ -527,7 +527,7 @@ function Single() {
 		</div>
 	</div>
 {/* <!-- //brands --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

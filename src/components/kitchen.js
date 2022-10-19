@@ -1,18 +1,18 @@
 import React from 'react'
-import Footer from './shared/Footer'
-import Header from './shared/Header'
+// import Footer from './shared/Footer'
+// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function kitchen() {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
 			<ul>
-				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="index.html">Home</Link><span>|</span></li>
+				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="/">Home</Link><span>|</span></li>
 				<li>Kitchen</li>
 			</ul>
 		</div>
@@ -28,7 +28,7 @@ function kitchen() {
 			<div className="w3l_banner_nav_right_banner3_btm">
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/13.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/13.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -43,7 +43,7 @@ function kitchen() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/20.jpg" alt=" " className="img-responsive"/>
+						<img src="../Assets/images/20.jpg" alt=" " className="img-responsive"/>
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -58,7 +58,7 @@ function kitchen() {
 				</div>
 				<div className="col-md-4 w3l_banner_nav_right_banner3_btml">
 					<div className="view view-tenth">
-						<img src="images/15.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/15.jpg" alt=" " className="img-responsive" />
 						<div className="mask">
 							<h4>Grocery Store</h4>
 							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
@@ -79,7 +79,7 @@ function kitchen() {
 				</div>
 				<div className="w3ls_w3l_banner_nav_right_grid_head_grids">
 					<div className="col-md-4 w3ls_w3l_banner_nav_right_grid_head_grid">
-						<img src="images/22.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/22.jpg" alt=" " className="img-responsive" />
 						<h4>Bread & Bakery</h4>
 						<ul>
 							<li><Link to="bread.html">Raising rolls</Link></li>
@@ -89,7 +89,7 @@ function kitchen() {
 						</ul>
 					</div>
 					<div className="col-md-4 w3ls_w3l_banner_nav_right_grid_head_grid">
-						<img src="images/23.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/23.jpg" alt=" " className="img-responsive" />
 						<h4>Beverages</h4>
 						<ul>
 							<li><Link to="drinks.html">Juices</Link></li>
@@ -98,7 +98,7 @@ function kitchen() {
 						</ul>
 					</div>
 					<div className="col-md-4 w3ls_w3l_banner_nav_right_grid_head_grid">
-						<img src="images/24.jpg" alt=" " className="img-responsive" />
+						<img src="../Assets/images/24.jpg" alt=" " className="img-responsive" />
 						<h4>Frozen Foods</h4>
 						<ul>
 							<li><Link to="frozen.html">Frozen Snacks</Link></li>
@@ -122,12 +122,12 @@ function kitchen() {
 				<div className="col-md-3 top_brand_left">
 					<div className="hover14 column">
 						<div className="agile_top_brand_left_grid">
-							<div className="tag"><img src="images/tag.png" alt=" " className="img-responsive" /></div>
+							<div className="tag"><img src="../Assets/images/tag.png" alt=" " className="img-responsive" /></div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block" >
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img title=" " alt=" " src="images/1.png" /></Link>		
+											<Link to="single"><img title=" " alt=" " src="../Assets/images/1.png" /></Link>		
 											<p>fortune sunflower oil</p>
 											<h4>$7.99 <span>$10.00</span></h4>
 										</div>
@@ -160,7 +160,7 @@ function kitchen() {
 								<figure>
 									<div className="snipcart-item block" >
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img title=" " alt=" " src="images/3.png" /></Link>		
+											<Link to="single"><img title=" " alt=" " src="../Assets/images/3.png" /></Link>		
 											<p>basmati rise (5 Kg)</p>
 											<h4>$11.99 <span>$15.00</span></h4>
 										</div>
@@ -190,13 +190,13 @@ function kitchen() {
 					<div className="hover14 column">
 						<div className="agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/2.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/2.png" alt=" " className="img-responsive" /></Link>
 											<p>Pepsi soft drink (2 Ltr)</p>
 											<h4>$8.00 <span>$10.00</span></h4>
 										</div>
@@ -226,13 +226,13 @@ function kitchen() {
 					<div className="hover14 column">
 						<div className="agile_top_brand_left_grid">
 							<div className="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " className="img-responsive" />
+								<img src="../Assets/images/offer.png" alt=" " className="img-responsive" />
 							</div>
 							<div className="agile_top_brand_left_grid1">
 								<figure>
 									<div className="snipcart-item block">
 										<div className="snipcart-thumb">
-											<Link to="single.html"><img src="images/4.png" alt=" " className="img-responsive" /></Link>
+											<Link to="single.html"><img src="../Assets/images/4.png" alt=" " className="img-responsive" /></Link>
 											<p>dogs food (4 Kg)</p>
 											<h4>$9.00 <span>$11.00</span></h4>
 										</div>
@@ -263,7 +263,7 @@ function kitchen() {
 		</div>
 	</div>
 {/* <!-- //top-brands --> */}
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }
