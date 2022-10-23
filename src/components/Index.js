@@ -1,15 +1,16 @@
-import React from 'react'
-// import Header from './shared/Header'
-import Main from './shared/Main'
-// import Footer from './shared/Footer'
+// import React from 'react'
+// import Main from './shared/Main'
 
 
-function Index() {
-  return (
-   <>
-    <Main/>
-   </>
-  )
-}
+// function Index() {
+  
+  
+//   return (
+//    <>
+//     <Main/>
+//    </>
+//   )
+// }
 
-export default Index
+// export default Index
+

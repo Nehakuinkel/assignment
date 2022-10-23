@@ -12,7 +12,7 @@ function Products() {
 	<div className="products-breadcrumb">
 		<div className="container">
 			<ul>
-				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="index.html">Home</Link><span>|</span></li>
+				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="/">Home</Link><span>|</span></li>
 				<li>Branded Foods</li>
 			</ul>
 		</div>

@@ -32,7 +32,7 @@ function Header () {
 						<div className="w3ls_vegetables">
 							<ul className="dropdown-menu drp-mnu">
 								<li><Link to="login">Login</Link></li> 
-								<li><Link to="login">Sign Up</Link></li>
+								<li><Link to="signup">Sign Up</Link></li>
 							</ul>
 						</div>                  
 					</div>	
@@ -40,7 +40,7 @@ function Header () {
 			</ul>
 		</div>
 		<div className="w3l_header_right1">
-			<h2><Link href="mail">Contact Us</Link></h2>
+			<h2><Link to="mail">Contact Us</Link></h2>
 		</div>
 		<div className="clearfix"> </div>
 	    </div>

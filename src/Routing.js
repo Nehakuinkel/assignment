@@ -24,6 +24,7 @@ import Services from "./components/Services";
 import ShortCodes from "./components/Short-codes";
 import Single from "./components/Single";
 import Vegetables from "./components/Vegetables";
+import Errorpage from "./components/shared/Errorpage";
 
 function Routing() {
   return (
@@ -38,7 +39,10 @@ function Routing() {
         <Route path="frozen" element={<Frozen/>}/>
         <Route path="household" element={<Household/>}/>
         <Route path="kitchen" element={<Kitchen/>}/>
+
         <Route path="login" element={<Login/>}/>
+        <Route path="signup" element={<Login/>}/>
+
         <Route path="mail" element={<Mail/>}/>
         <Route path="payment" element={<Payment/>}/>
         <Route path="pet" element={<Pet/>}/>
@@ -48,6 +52,7 @@ function Routing() {
         <Route path="shortcodes" element={<ShortCodes/>}/>
         <Route path="single" element={<Single/>}/>
         <Route path="vegetables" element={<Vegetables/>}/>
+        <Route path='*' element={<Errorpage />}/>
       </Routes>
   )
 }

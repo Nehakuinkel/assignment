@@ -1,18 +1,15 @@
 import React from 'react'
-// import Footer from './shared/Footer'
-import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Vegetables() {
   return (
     <>
-    <Header/>
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">
 		<div className="container">
 			<ul>
-				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="index.html">Home</Link><span>|</span></li>
+				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="/">Home</Link><span>|</span></li>
 				<li>Fruits & Vegetables</li>
 			</ul>
 		</div>

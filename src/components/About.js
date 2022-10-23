@@ -3,6 +3,8 @@ import Navbarleft from './shared/Navbarleft';
 import { Link } from 'react-router-dom';
 
 function About() {
+	// let pathName = window.location.pathname;
+	// console.log(pathName);
   return (
     <div>
     {/* <Header/> */}
@@ -10,7 +12,7 @@ function About() {
 	<div className="products-breadcrumb">
 		<div className="container">
 			<ul>
-				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="index.html">Home</Link><span>|</span></li>
+				<li><i className="fa fa-home" aria-hidden="true"></i><Link to="/">Home</Link><span>|</span></li>
 				<li>About Us</li>
 			</ul>
 		</div>
