@@ -1,10 +1,9 @@
 import React from 'react'
-// import Footer from './shared/Footer'
-// import Header from './shared/Header'
 import Navbarleft from './shared/Navbarleft'
 import { Link } from 'react-router-dom'
 
 function Products() {
+	
   return (
     <>
     {/* <Header/> */}
@@ -21,6 +20,7 @@ function Products() {
 <!-- banner --> */}
 	<div className="banner">
 		<Navbarleft/>
+
 		<div className="w3l_banner_nav_right">
 			<div className="w3l_banner_nav_right_banner3">
 				<h3>Best Deals For New Products<span className="blink_me"></span></h3>

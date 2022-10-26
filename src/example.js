@@ -53,17 +53,23 @@ const axios = require('axios');
 //   })
 
 //With API key and params option
-
-// require('dotenv').config();
-// axios({
-//   method : "get",
-//   url : `https://api.nasa.gov/planetary/apod`,
-//   params : {
-//     api_key: process.env.NASA_API_KEY,
-//   },
-// }).then((response) => {
-//   console.log(response.data)
-// });
+//correct ans
+require('dotenv').config();
+axios({
+  method : "get",
+  url : `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
+  params : {
+    allProduct: 1,
+  },
+  headers: {
+    "Api-key": `${process.env.API_KEY}`,
+    "Warehouse-Id": 1,
+    // "Connection": "keep-alive",
+        //Authorization: `Bearer ${process.env.TOKEN}`,
+      },
+}).then((response) => {
+  console.log(response.data)
+});
 
 // axios({
 //   method: "get",
@@ -128,15 +134,7 @@ const axios = require('axios');
 
 
 
-const url = `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`;
-// require('dotenv').config();
-// axios
-//   .get(
-//     `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`
-//   )
-//   .then((response) => {
-//     console.log(response.data);
-//   })
+
 
 
 
@@ -164,6 +162,49 @@ const url = `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=
 
 // fetchQuotes()
 
+
+// axios({
+//     method: 'post',
+//     url: 'https://uat.ordering-farmshop.ekbana.net/api/v4/auth/signup',
+//     data: {
+//         first_name: 'reyansh',
+//         last_name: 'sharma',
+//       email:'menuka2074@gmail.com',
+//       password:'Hello@World1',
+//       mobile_number:'9867689087'
+//     },
+//     headers: {
+//         "Api-key": `${process.env.API_KEY}`,
+//         // "Warehouse-Id": 1,
+//         // "Connection": "keep-alive",
+//             //Authorization: `Bearer ${process.env.TOKEN}`,
+//           },
+
+//   }).then((response) => {
+//   console.log(response)
+// });;
+
+
+// axios({
+//   method: 'post',
+//   url: 'https://uat.ordering-farmshop.ekbana.net/api/v4/auth/login',
+//   data: {
+//       username: 'spiritual2055@gmail.com',
+//       password: 'Metallica',
+//     client_id: 2,
+//     client_secret:"2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
+//     grant_type:'password'
+//   },
+//   headers: {
+//       "Api-key": `${process.env.API_KEY}`,
+//       // "Warehouse-Id": 1,
+//       // "Connection": "keep-alive",
+//           //Authorization: `Bearer ${process.env.TOKEN}`,
+//         },
+
+// }).then((response) => {
+// console.log(response.data)
+// });;
 
 
 

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 function Checkout() {
   return (
     <>
+	<h1>hello</h1>
     {/* <Header/> */}
     {/* <!-- products-breadcrumb --> */}
 	<div className="products-breadcrumb">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbarleft from './shared/Navbarleft';
+import Navbarleft from '../shared/Navbarleft';
 import { Link } from 'react-router-dom';
 
 function About() {

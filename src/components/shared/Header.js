@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import './Header.css';
 // import $ from 'jquery';
 
 function Header () {
@@ -16,7 +17,7 @@ function Header () {
       </form>
 		</div>
 		<div className="product_list_header">  
-			<form action="#" method="post" className="last">
+			<form action="/cart" method="get" className="last">
                 <fieldset>
                     <input type="hidden" name="cmd" value="_cart" />
                     <input type="hidden" name="display" value="1" />
@@ -27,12 +28,14 @@ function Header () {
 		<div className="w3l_header_right">
 			<ul>
 				<li className="dropdown profile_details_drop">
-					<Link to="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true"></i><span className="caret"></span></Link>
+					<Link to="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" ><h6>Avatar</h6></i><span className="caret"></span></Link>
+					
 					<div className="mega-dropdown-menu">
 						<div className="w3ls_vegetables">
 							<ul className="dropdown-menu drp-mnu">
-								<li><Link to="login">Login</Link></li> 
-								<li><Link to="signup">Sign Up</Link></li>
+							
+								<li><Link to="/login">Login</Link></li> 
+								<li><Link to="/signup">Sign Up</Link></li>
 							</ul>
 						</div>                  
 					</div>	

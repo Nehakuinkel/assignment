@@ -14,7 +14,7 @@ export const registerOptions = {
                     message: "Cannot Exceed 20"
                   },
                   minLength: {
-                    value: 5,
+                    value: 2,
                     message: "Invalid Name"
                   }
             },
@@ -56,22 +56,15 @@ export const registerOptions = {
                     message: "Cannot exceed 50 characters"
                   }
             },
-    		// Message : { 
-        //         required: {
-        //             value: true,
-        //             message: "Please Enter Message"
-        //           }, 
-        //           maxLength: {
-        //             value: 280,
-        //             message: "Cannot exceed 280 characters."
-        //           }
-        //     }
     		password: {
-    			required: "Password is required",
-    			minLength: {
-    			  value: 8,
-    			  message: "Password must have at least 8 characters"
-    			}
-    		 }
+                required: {
+                  value: true,
+                  message: "Please Enter Password"
+                }, 
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                  message: "Invalid password"
+                }
+    		      }
 }
 

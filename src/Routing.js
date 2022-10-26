@@ -1,30 +1,33 @@
 import { 
   Routes, 
   Route
-} 
-  from "react-router-dom";
+} from "react-router-dom";
 import Main from "./components/shared/Main";
 import React from 'react'
-import About from "./components/About";
+import About from "./components/General/About";
 import Bread from "./components/Bread";
 import Checkout from "./components/Bread";
 import Drinks from "./components/Drinks";
 import Events from "./components/Events";
-import Faqs from "./components/Faqs";
+import Faqs from "./components/General/Faqs";
 import Frozen from "./components/Frozen";
 import Household from "./components/Household";
 import Kitchen from "./components/kitchen";
-import Login from "./components/Login";
-import Mail from "./components/Mail";
+import Login from "./components/Users/Login";
+import Mail from "./components/Users/Mail";
 import Payment from "./components/Payment";
 import Pet from "./components/Pet";
-import Privacy from "./components/Privacy";
+import Privacy from "./components/General/Privacy";
 import Products from "./components/Products";
 import Services from "./components/Services";
-import ShortCodes from "./components/Short-codes";
+import ShortCodes from "./components/General/Short-codes";
 import Single from "./components/Single";
 import Vegetables from "./components/Vegetables";
 import Errorpage from "./components/shared/Errorpage";
+import ForgotPassword from "./components/Users/ForgotPassword";
+import Cart from "./components/Cart";
+import ResetPassword from "./components/Users/ResetPassword";
+import HomePage from "./components/HomePage";
 
 function Routing() {
   return (
@@ -32,6 +35,7 @@ function Routing() {
         <Route path='/' element={<Main/>}/>
         <Route path="about" element={<About/>}/>
         <Route path="bread" element={<Bread/>}/>
+        <Route path="cart" element={<Cart/>}/>
         <Route path="checkout" element={<Checkout/>}/>
         <Route path="drinks" element={<Drinks/>}/>
         <Route path="events" element={<Events/>}/>
@@ -42,6 +46,7 @@ function Routing() {
 
         <Route path="login" element={<Login/>}/>
         <Route path="signup" element={<Login/>}/>
+        <Route path="forgetPassword" element={<ForgotPassword/>} />
 
         <Route path="mail" element={<Mail/>}/>
         <Route path="payment" element={<Payment/>}/>
@@ -52,6 +57,8 @@ function Routing() {
         <Route path="shortcodes" element={<ShortCodes/>}/>
         <Route path="single" element={<Single/>}/>
         <Route path="vegetables" element={<Vegetables/>}/>
+        <Route path="resetPassword" element={<ResetPassword/>}/>
+        <Route path="home" element={<HomePage/>}/>
         <Route path='*' element={<Errorpage />}/>
       </Routes>
   )
