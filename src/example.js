@@ -1,6 +1,6 @@
-const axios = require('axios');
+const axios = require("axios");
 //const url = `https://api.openweathermap.org/data/2.5/weather?q=kathmandu&units=metric&appid=3d97b3b7cc808102c7be63d0abb7ba45`
-  
+
 // axios({
 //   method : "get",
 //   url : "https://finalspaceapi.com/api/v0/character/?limit=2",
@@ -28,7 +28,6 @@ const axios = require('axios');
 // }
 // getCharacters();
 
-
 // const url = require("url");
 // const queryParams = {
 //   limit:1,
@@ -42,7 +41,6 @@ const axios = require('axios');
 //     console.log(response.data);
 //   });
 
-
 // require('dotenv').config();
 // axios
 //   .get(
@@ -54,21 +52,21 @@ const axios = require('axios');
 
 //With API key and params option
 //correct ans
-require('dotenv').config();
+require("dotenv").config();
 axios({
-  method : "get",
-  url : `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
-  params : {
+  method: "get",
+  url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
+  params: {
     allProduct: 1,
   },
   headers: {
     "Api-key": `${process.env.API_KEY}`,
     "Warehouse-Id": 1,
     // "Connection": "keep-alive",
-        //Authorization: `Bearer ${process.env.TOKEN}`,
-      },
+    //Authorization: `Bearer ${process.env.TOKEN}`,
+  },
 }).then((response) => {
-  console.log(response.data)
+  console.log(response.data);
 });
 
 // axios({
@@ -124,19 +122,12 @@ axios({
 //     console.log(response.data);
 //   });
 
-
 // Axios Head Request
 // axios.head("https://rickandmortyapi.com/api/character/1").then((response) => {
 //   console.log(
 //     `Status: ${response.status} - Server: ${response.headers.server} - Data: ${response.data}`
 //   );
 // });
-
-
-
-
-
-
 
 //   require('dotenv').config();
 // axios({
@@ -145,7 +136,6 @@ axios({
 // }).then((response) => {
 //   console.log(response.data)
 // });
-
 
 // const fetchQuotes = async () => {
 // 	const config = {
@@ -161,7 +151,6 @@ axios({
 // };
 
 // fetchQuotes()
-
 
 // axios({
 //     method: 'post',
@@ -184,7 +173,6 @@ axios({
 //   console.log(response)
 // });;
 
-
 // axios({
 //   method: 'post',
 //   url: 'https://uat.ordering-farmshop.ekbana.net/api/v4/auth/login',
@@ -205,121 +193,3 @@ axios({
 // }).then((response) => {
 // console.log(response.data)
 // });;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
