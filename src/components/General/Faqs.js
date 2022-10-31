@@ -1,7 +1,4 @@
 import React from "react";
-// import Footer from './shared/Footer'
-// import Header from './shared/Header'
-import Navbarleft from "../shared/Navbarleft";
 import { Link } from "react-router-dom";
 
 function Faqs() {
@@ -24,7 +21,7 @@ function Faqs() {
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
+        
         <div className="w3l_banner_nav_right">
           {/* <!-- faq --> */}
           <div className="faq">

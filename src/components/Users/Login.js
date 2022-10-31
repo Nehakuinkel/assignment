@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbarleft from "../shared/Navbarleft";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
@@ -87,7 +86,6 @@ function Login() {
         </div>
 
         <div className="banner">
-          <Navbarleft />
           <div className="w3l_banner_nav_right">
             <div className="w3_login">
               {status === 200 && navigate("/")}
@@ -199,7 +197,6 @@ function Login() {
         </div>
 
         <div className="banner">
-          <Navbarleft />
           <div className="w3l_banner_nav_right">
             <div className="w3_login">
               {status === 201 && (

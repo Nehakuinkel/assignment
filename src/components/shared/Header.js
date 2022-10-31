@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-// import $ from 'jquery';
+
 
 function Header() {
   return (
@@ -15,10 +15,8 @@ function Header() {
             <input
               type="text"
               name="Product"
-              value="Search a product..."
-              onfocus="this.value = '';"
-              onblur="if (this.value == '') {this.value = 'Search a product...';}"
-              required=""
+              placeholder="Search a Product" 
+              
             />
             <input type="submit" value=" " />
           </form>
@@ -71,20 +69,6 @@ function Header() {
         </div>
         <div className="clearfix"> </div>
       </div>
-      {/* <script>
-		
-	      $(document).ready(function() {
-		    var navoffeset=$(".agileits_header").offset().top;
-		    $(window).scroll(function(){
-			  var scrollpos=$(window).scrollTop(); 
-			    if(scrollpos >=navoffeset){
-				    $(".agileits_header").addclassName("fixed");
-			    }else{
-				$(".agileits_header").removeclassName("fixed");
-			}
-		  });
-		  });
-      </script> */}
 
       <div className="logo_products">
         <div className="container">

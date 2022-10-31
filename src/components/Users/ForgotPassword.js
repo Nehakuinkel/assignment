@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbarleft from "../shared/Navbarleft";
 import { useForm } from "react-hook-form";
 
 function ForgotPassword() {
@@ -39,7 +38,6 @@ function ForgotPassword() {
       </div>
 
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           <div className="w3_login">
             <h3>Sign Up</h3>

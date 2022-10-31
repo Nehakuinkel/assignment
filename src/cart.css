@@ -10,7 +10,7 @@
 }
 .qty {
   width: 150px;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   justify-content: space-evenly;
 }
@@ -23,7 +23,7 @@
   /* justify-content: center; */
 }
 .price {
-  background-color: rgb(193, 123, 100);
+ color:red;
   width: 100px;
   display: flex;
   align-items: center;
@@ -38,10 +38,13 @@
 .total{
   display:flex;
   justify-content: end;
+  margin-right: 10px;
 }
 .checkoutBtn{
   display: flex;
   justify-content: end;
+  margin-right: 20px ;
+  margin-top:40px;
 }
 
 

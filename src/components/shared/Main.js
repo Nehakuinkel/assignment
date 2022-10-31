@@ -1,13 +1,89 @@
-import React from "react";
-import Navbarleft from "./Navbarleft";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-function Main() {
+function Main({ addToCart }) {
+  const [product, setproductData] = useState([]);
+
+  const getCategoriesList = () => {
+    axios({
+      method: "get",
+      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
+      headers: {
+        "Api-key": process.env.REACT_APP_API_KEY,
+        "Warehouse-Id": 1,
+      },
+    })
+      .then((response) => {
+        setproductData(response.data.data);
+      })
+      .catch((error) => console.error(`Error: ${error}`));
+  };
+  useEffect(() => {
+    getCategoriesList();
+  }, []);
+  console.log(product);
+  let imglink =
+    "https://uat.ordering-farmshop.ekbana.net/storage/placeholder/placeholder-web.png";
+  //FILTERING DATA ON THE BASIS OF CATEGORY
+
+  const imgData = product.filter((img) => {
+    return img.images[0].imageName !== imglink;
+  });
+  console.log(imgData);
+  // const [items, setItems] = useState([]);
+
+  //     const getCategoriesList = () => {
+  //       axios({
+  //         method: "get",
+  //         url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
+  //         // params: {
+  //         //   allProduct: 1,
+  //         // },
+  //         headers: {
+  //           "Api-key": process.env.REACT_APP_API_KEY,
+  //           "Warehouse-Id": 1,
+  //         },
+  //       })
+  //         .then((response) => {
+  //           setItems(response.data.data);
+  //         })
+  //         .catch((error) => console.error(`Error: ${error}`));
+  //     };
+  //     useEffect(() => {
+  //       getCategoriesList();
+  //     }, []);
+  //     console.log(items);
+
+  //     //FILTERING DATA ON THE BASIS OF CATEGORY
+  //     const dairyItems = items.filter((item) => {
+  //       let itemList =
+  //         item.categorySlug === "dairy-products" && item.title === "Paneer - Theki";
+  //       return itemList;
+  //     });
+
+  //     const vegetableItems = items.filter((item) => {
+  //       let itemList =
+  //         item.categorySlug === "fresh-vegetabless" && item.title === "Beetroot";
+  //       return itemList;
+  //     });
+
+  //     const riceItems = items.filter((item) => {
+  //       let itemList =
+  //         item.categorySlug === "rice" &&
+  //         (item.title === "Anadi (Sticky) Rice Ashram" || item.title === "Test01");
+  //       return itemList;
+  //     });
+
+  //     console.log("Vegetable", vegetableItems);
+  //     console.log("Rice", riceItems);
+  //     console.log("dairyItems", dairyItems);
+
+  //     const hotofferItems = [...vegetableItems, ...riceItems, ...dairyItems];
   return (
     <div>
       {/* <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           <section className="slider">
             <div className="flexslider">
@@ -63,7 +139,6 @@ function Main() {
               </ul>
             </div>
           </section>
-          {/* <!-- flexSlider --> */}
           <link
             rel="stylesheet"
             href="css/flexslider.css"
@@ -71,18 +146,6 @@ function Main() {
             media="screen"
             property=""
           />
-          {/* <script defer src="js/jquery.flexslider.js"></script>
-				<script type="text/javascript">
-				$(window).load(function(){
-				  $('.flexslider').flexslider({
-					animation: "slide",
-					start: function(slider){
-					  $('body').removeclassName('loading');
-					}
-				  });
-				});
-			  </script> */}
-          {/* <!-- //flexSlider --> */}
         </div>
         <div className="clearfix"></div>
       </div>
@@ -139,282 +202,67 @@ function Main() {
       {/* <!-- top-brands --> */}
       <div className="top-brands">
         <div className="container">
-          <h3>Hot Offers</h3>
-          <div className="agile_top_brands_grids">
-            <div className="col-md-3 top_brand_left">
-              <div className="hover14 column">
-                <div className="agile_top_brand_left_grid">
-                  <div className="tag">
-                    <img
-                      src="../Assets/images/tag.png"
-                      alt=" "
-                      className="img-responsive"
-                    />
-                  </div>
-                  <div className="agile_top_brand_left_grid1">
-                    <figure>
-                      <div className="snipcart-item block">
-                        <div className="snipcart-thumb">
-                          <Link to="single">
+          <h3 className="w3l_fruit">Hot Offers</h3>
+          <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
+            {imgData.length > 0 ? (
+              imgData.map((item) => {
+                return (
+                  <>
+                    <div
+                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd"
+                      key={item.id}
+                    >
+                      <div className="hover14 column">
+                        <div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                          <div className="tag">
                             <img
-                              title=" "
-                              alt=" "
-                              src="../Assets/images/1.png"
-                            />
-                          </Link>
-                          <p>fortune sunflower oil</p>
-                          <h4>
-                            $7.99 <span>$10.00</span>
-                          </h4>
-                        </div>
-                        <div className="snipcart-details top_brand_home_details">
-                          <form action="checkout" method="post">
-                            <fieldset>
-                              <input type="hidden" name="cmd" value="_cart" />
-                              <input type="hidden" name="add" value="1" />
-                              <input type="hidden" name="business" value=" " />
-                              <input
-                                type="hidden"
-                                name="item_name"
-                                value="Fortune Sunflower Oil"
-                              />
-                              <input type="hidden" name="amount" value="7.99" />
-                              <input
-                                type="hidden"
-                                name="discount_amount"
-                                value="1.00"
-                              />
-                              <input
-                                type="hidden"
-                                name="currency_code"
-                                value="USD"
-                              />
-                              <input type="hidden" name="return" value=" " />
-                              <input
-                                type="hidden"
-                                name="cancel_return"
-                                value=" "
-                              />
-                              <input
-                                type="submit"
-                                name="submit"
-                                value="Add to cart"
-                                className="button"
-                              />
-                            </fieldset>
-                          </form>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 top_brand_left">
-              <div className="hover14 column">
-                <div className="agile_top_brand_left_grid">
-                  <div className="agile_top_brand_left_grid1">
-                    <figure>
-                      <div className="snipcart-item block">
-                        <div className="snipcart-thumb">
-                          <Link to="single">
-                            <img
-                              title=" "
-                              alt=" "
-                              src="../Assets/images/3.png"
-                            />
-                          </Link>
-                          <p>basmati rise (5 Kg)</p>
-                          <h4>
-                            $11.99 <span>$15.00</span>
-                          </h4>
-                        </div>
-                        <div className="snipcart-details top_brand_home_details">
-                          <form action="#" method="post">
-                            <fieldset>
-                              <input type="hidden" name="cmd" value="_cart" />
-                              <input type="hidden" name="add" value="1" />
-                              <input type="hidden" name="business" value=" " />
-                              <input
-                                type="hidden"
-                                name="item_name"
-                                value="basmati rise"
-                              />
-                              <input
-                                type="hidden"
-                                name="amount"
-                                value="11.99"
-                              />
-                              <input
-                                type="hidden"
-                                name="discount_amount"
-                                value="1.00"
-                              />
-                              <input
-                                type="hidden"
-                                name="currency_code"
-                                value="USD"
-                              />
-                              <input type="hidden" name="return" value=" " />
-                              <input
-                                type="hidden"
-                                name="cancel_return"
-                                value=" "
-                              />
-                              <input
-                                type="submit"
-                                name="submit"
-                                value="Add to cart"
-                                className="button"
-                              />
-                            </fieldset>
-                          </form>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 top_brand_left">
-              <div className="hover14 column">
-                <div className="agile_top_brand_left_grid">
-                  <div className="agile_top_brand_left_grid_pos">
-                    <img
-                      src="../Assets/images/offer.png"
-                      alt=" "
-                      className="img-responsive"
-                    />
-                  </div>
-                  <div className="agile_top_brand_left_grid1">
-                    <figure>
-                      <div className="snipcart-item block">
-                        <div className="snipcart-thumb">
-                          <Link to="single">
-                            <img
-                              src="../Assets/images/2.png"
+                              src="../Assets/images/tag.png"
                               alt=" "
                               className="img-responsive"
                             />
-                          </Link>
-                          <p>Pepsi soft drink (2 Ltr)</p>
-                          <h4>
-                            $8.00 <span>$10.00</span>
-                          </h4>
-                        </div>
-                        <div className="snipcart-details top_brand_home_details">
-                          <form action="#" method="post">
-                            <fieldset>
-                              <input type="hidden" name="cmd" value="_cart" />
-                              <input type="hidden" name="add" value="1" />
-                              <input type="hidden" name="business" value=" " />
-                              <input
-                                type="hidden"
-                                name="item_name"
-                                value="Pepsi soft drink"
-                              />
-                              <input type="hidden" name="amount" value="8.00" />
-                              <input
-                                type="hidden"
-                                name="discount_amount"
-                                value="1.00"
-                              />
-                              <input
-                                type="hidden"
-                                name="currency_code"
-                                value="USD"
-                              />
-                              <input type="hidden" name="return" value=" " />
-                              <input
-                                type="hidden"
-                                name="cancel_return"
-                                value=" "
-                              />
-                              <input
-                                type="submit"
-                                name="submit"
-                                value="Add to cart"
-                                className="button"
-                              />
-                            </fieldset>
-                          </form>
+                          </div>
+
+                          <div className="agile_top_brand_left_grid1">
+                            <figure>
+                              <div className="snipcart-item block">
+                                <div className="snipcart-thumb">
+                                  <a href="single.html">
+                                    <img
+                                      src={item.images[0].imageName}
+                                      alt=" "
+                                      className="img-responsive"
+                                    />
+                                  </a>
+                                  <p>{item.title}</p>
+                                  <h4>
+                                    {item.unitPrice[0].newPrice}
+                                    <span>{item.unitPrice[0].oldPrice}</span>
+                                  </h4>
+                                </div>
+                                <div className="snipcart-details ">
+                                  <input
+                                    type="button"
+                                    value="Add to cart"
+                                    className="button addtoCartBtn text-center"
+                                    onClick={() => {
+                                      addToCart(item);
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </figure>
+                          </div>
                         </div>
                       </div>
-                    </figure>
-                  </div>
-                </div>
+                    </div>
+                  </>
+                );
+              })
+            ) : (
+              <div className="notAvailableProducts">
+                <b>Items Will be Available Soon...</b>
               </div>
-            </div>
-            <div className="col-md-3 top_brand_left">
-              <div className="hover14 column">
-                <div className="agile_top_brand_left_grid">
-                  <div className="agile_top_brand_left_grid_pos">
-                    <img
-                      src="../Assets/images/offer.png"
-                      alt=" "
-                      className="img-responsive"
-                    />
-                  </div>
-                  <div className="agile_top_brand_left_grid1">
-                    <figure>
-                      <div className="snipcart-item block">
-                        <div className="snipcart-thumb">
-                          <Link to="single">
-                            <img
-                              src="../Assets/images/4.png"
-                              alt=" "
-                              className="img-responsive"
-                            />
-                          </Link>
-                          <p>dogs food (4 Kg)</p>
-                          <h4>
-                            $9.00 <span>$11.00</span>
-                          </h4>
-                        </div>
-                        <div className="snipcart-details top_brand_home_details">
-                          <form action="#" method="post">
-                            <fieldset>
-                              <input type="hidden" name="cmd" value="_cart" />
-                              <input type="hidden" name="add" value="1" />
-                              <input type="hidden" name="business" value=" " />
-                              <input
-                                type="hidden"
-                                name="item_name"
-                                value="dogs food"
-                              />
-                              <input type="hidden" name="amount" value="9.00" />
-                              <input
-                                type="hidden"
-                                name="discount_amount"
-                                value="1.00"
-                              />
-                              <input
-                                type="hidden"
-                                name="currency_code"
-                                value="USD"
-                              />
-                              <input type="hidden" name="return" value=" " />
-                              <input
-                                type="hidden"
-                                name="cancel_return"
-                                value=" "
-                              />
-                              <input
-                                type="submit"
-                                name="submit"
-                                value="Add to cart"
-                                className="button"
-                              />
-                            </fieldset>
-                          </form>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="clearfix"> </div>
+            )}
           </div>
         </div>
       </div>

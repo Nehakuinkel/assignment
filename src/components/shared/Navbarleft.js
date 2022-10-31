@@ -24,7 +24,6 @@ function Navbarleft() {
   useEffect(() => {
     getCategoriesList();
   }, []);
-  console.log(categoryList);
 
   return (
     <>

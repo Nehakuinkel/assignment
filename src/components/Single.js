@@ -1,10 +1,12 @@
 import React from "react";
-// import Footer from './shared/Footer'
-// import Header from './shared/Header'
-import Navbarleft from "./shared/Navbarleft";
 import { Link } from "react-router-dom";
+import "./single.css";
 
-function Single() {
+function Single({ productDetailsData, addToCart }) {
+  // const addToCart = () => {
+  //   console.log("hello")
+  // }
+  console.log("addToCart", addToCart)
   return (
     <>
       {/* <Header/> */}
@@ -24,7 +26,6 @@ function Single() {
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           <div className="w3l_banner_nav_right_banner3">
             <h3>
@@ -32,13 +33,13 @@ function Single() {
             </h3>
           </div>
           <div className="agileinfo_single">
-            <h5>charminar pulao basmati rice 5 kg</h5>
-            <div className="col-md-4 agileinfo_single_left">
+            <h5>{productDetailsData.title}</h5>
+            <div className="col-md-4 agileinfo_single_left singlePage">
               <img
                 id="example"
-                src="images/76.png"
+                src={productDetailsData.images[0].imageName}
                 alt=" "
-                className="img-responsive"
+                className="img-responsive singlePage"
               />
             </div>
             <div className="col-md-8 agileinfo_single_right">
@@ -64,20 +65,35 @@ function Single() {
               </div>
               <div className="w3agile_description">
                 <h4>Description :</h4>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit anim id est laborum.Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </p>
+                {productDetailsData.description === "" ? (
+                  <p>
+                    This is a product details page. It has no Description.
+                    Description coming soon.
+                  </p>
+                ) : (
+                  <p>{productDetailsData.description}</p>
+                )}
               </div>
               <div className="snipcart-item block">
                 <div className="snipcart-thumb agileinfo_single_right_snipcart">
                   <h4>
-                    $21.00 <span>$25.00</span>
+                    $ {productDetailsData.unitPrice[0].newPrice}{" "}
+                    <span> $ {productDetailsData.unitPrice[0].oldPrice}</span>
                   </h4>
                 </div>
                 <div className="snipcart-details agileinfo_single_right_details">
+                  <div className="snipcart-details ">
+                    <input
+                      type="button"
+                      value="Add to cart"
+                      className="button addtoCartBtn text-center"
+                      onClick={() => {
+                        addToCart(productDetailsData);
+                      }}
+                    />
+                  </div>
+                </div>
+                {/* <div className="snipcart-details agileinfo_single_right_details">
                   <form action="#" method="post">
                     <fieldset>
                       <input type="hidden" name="cmd" value="_cart" />
@@ -102,10 +118,13 @@ function Single() {
                         name="submit"
                         value="Add to cart"
                         className="button"
+                        onClick={() => {
+                                      addToCart(productDetailsData);
+                                    }}
                       />
                     </fieldset>
                   </form>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="clearfix"> </div>
@@ -147,6 +166,15 @@ function Single() {
                           </h4>
                         </div>
                         <div className="snipcart-details">
+                          <input
+                            type="submit"
+                            name="submit"
+                            value="Add to cart"
+                            className="button"
+                          />
+                        </div>
+
+                        {/* <div className="snipcart-details">
                           <form action="#" method="post">
                             <fieldset>
                               <input type="hidden" name="cmd" value="_cart" />
@@ -182,7 +210,7 @@ function Single() {
                               />
                             </fieldset>
                           </form>
-                        </div>
+                        </div> */}
                       </div>
                     </figure>
                   </div>

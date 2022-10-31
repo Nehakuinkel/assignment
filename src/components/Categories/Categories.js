@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Navbarleft from "../shared/Navbarleft";
+import "./category.css"
 
-function Categories({ addToCart }) {
+function Categories({ addToCart, getProductDetails}) {
   let { categoryslug } = useParams();
   const [productList, setProductList] = useState([]);
 
@@ -53,7 +53,7 @@ function Categories({ addToCart }) {
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
+        {/* <Navbarleft /> */}
         <div className="w3l_banner_nav_right">
           <div className="w3l_banner_nav_right_banner5">
             <h3>
@@ -132,7 +132,7 @@ function Categories({ addToCart }) {
           <div className="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
             <h3 className="w3l_fruit">{categoryslug}</h3>
             <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
-              {filterData.map((dataProduct) => {
+              {filterData.length>0 ? filterData.map((dataProduct) => {
                 return (
                   <>
                     <div
@@ -152,13 +152,23 @@ function Categories({ addToCart }) {
                             <figure>
                               <div className="snipcart-item block">
                                 <div className="snipcart-thumb">
-                                  <Link to="single">
-                                    <img
+                                  {/* <Link to={`/${categoryslug}/${dataProduct.id}`}> */}
+                                  {/* <Link to="/single"> */}
+                                  <button
+                                    type="button"
+                                    value="Add to cart"
+                                    className="button text-center"
+                                    onClick={() => {
+                                      getProductDetails(dataProduct);
+                                    }}
+                                  >  <img
                                       src={dataProduct.images[0].imageName}
                                       alt=" "
                                       className="img-responsive"
                                     />
-                                  </Link>
+                                    </button>
+                                   
+                                  {/* </Link> */}
                                   <p>{dataProduct.title}</p>
                                   <h4>
                                     ${dataProduct.unitPrice[0].oldPrice}
@@ -186,7 +196,8 @@ function Categories({ addToCart }) {
                     </div>
                   </>
                 );
-              })}
+              }):<div className="empty-category">Items Will be provided soon </div>}
+             
 
               <div className="clearfix"> </div>
             </div>

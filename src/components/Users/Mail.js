@@ -1,5 +1,4 @@
 import React from "react";
-import Navbarleft from "../shared/Navbarleft";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
@@ -60,7 +59,6 @@ function Mail() {
         </div>
       </div>
       <div class="banner">
-        <Navbarleft />
         <div class="w3l_banner_nav_right">
           {/* <!-- mail --> */}
           <div class="mail">

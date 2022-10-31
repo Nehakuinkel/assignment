@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbarleft from "../shared/Navbarleft";
 import { useForm } from "react-hook-form";
 
 function ResetPassword() {
@@ -28,7 +27,6 @@ function ResetPassword() {
       </div>
 
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           <div className="w3_login">
             <h3>Reset Password</h3>

@@ -1,5 +1,4 @@
 import React from "react";
-import Navbarleft from "../shared/Navbarleft";
 import { Link } from "react-router-dom";
 
 function About() {
@@ -24,7 +23,6 @@ function About() {
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           {/* <!-- about --> */}
           <div className="privacy about">

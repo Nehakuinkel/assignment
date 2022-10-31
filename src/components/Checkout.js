@@ -1,5 +1,4 @@
 import React from "react";
-import Navbarleft from "./shared/Navbarleft";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "./shared/formValidate";
@@ -68,7 +67,6 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
       <div className="banner">
-        <Navbarleft />
         <div className="w3l_banner_nav_right">
           {/* <!-- about --> */}
           <div className="privacy about">
@@ -86,11 +84,11 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
                 <>
                   <div className="cartItems mb-3">
                     <h4>{index + 1}</h4>
-                    <span className="cartName">{item.name}</span>
-                    <img src={item.image} alt=" " className="cart-img" />
+                    <span className="cartName">{item.title}</span>
+                    <img src={item.images[0].imageName} alt=" " className="cart-img" />
                     <div className="qty">
                       <button
-                        onClick={() => decrement(item.name)}
+                        onClick={() => decrement(item.id)}
                         className="cartbtn"
                         type="submit"
                       >
@@ -99,7 +97,7 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
 
                       <span className="quantity">{item.orderedQuantity}</span>
                       <button
-                        onClick={() => increment(item.name)}
+                        onClick={() => increment(item.id)}
                         className="cartbtn"
                         type="submit"
                       >
@@ -107,9 +105,9 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
                       </button>
                     </div>
                     <p className="price">
-                      {item.newPrice * item.orderedQuantity}
+                      {item.unitPrice[0].newPrice * item.orderedQuantity}
                     </p>
-                    <button onClick={() => removeItem(item.name)}>
+                    <button onClick={() => removeItem(item.id)}>
                       Remove
                     </button>
                   </div>
@@ -134,7 +132,7 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
                   return(
                     <>
                     <li>
-                    {item.name} <i>-</i> <span>{item.newPrice} </span>
+                    {item.title} <i>-</i> <span>{item.unitPrice[0].newPrice} </span>
                   </li>
                     </>
                   )
