@@ -1,3 +1,7 @@
 .fa-user {
     text-align: center;
   }
+  .user-btn{
+    border: none;
+    background-color: white;
+  }

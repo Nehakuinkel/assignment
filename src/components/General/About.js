@@ -2,12 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function About() {
-  // let pathName = window.location.pathname;
-  // console.log(pathName);
   return (
     <div>
-      {/* <Header/> */}
-      {/* <!-- products-breadcrumb --> */}
       <div className="products-breadcrumb">
         <div className="container">
           <ul>
@@ -20,8 +16,6 @@ function About() {
           </ul>
         </div>
       </div>
-      {/* <!-- //products-breadcrumb -->
-<!-- banner --> */}
       <div className="banner">
         <div className="w3l_banner_nav_right">
           {/* <!-- about --> */}

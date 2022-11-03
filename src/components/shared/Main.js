@@ -1,85 +1,16 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-function Main({ addToCart }) {
-  const [product, setproductData] = useState([]);
-
-  const getCategoriesList = () => {
-    axios({
-      method: "get",
-      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-      },
-    })
-      .then((response) => {
-        setproductData(response.data.data);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
-  };
-  useEffect(() => {
-    getCategoriesList();
-  }, []);
-  console.log(product);
+function Main({ addToCart, productList }) {
   let imglink =
     "https://uat.ordering-farmshop.ekbana.net/storage/placeholder/placeholder-web.png";
-  //FILTERING DATA ON THE BASIS OF CATEGORY
 
-  const imgData = product.filter((img) => {
+  //Data fetch which has image available
+
+  const imgData = productList.filter((img) => {
     return img.images[0].imageName !== imglink;
   });
   console.log(imgData);
-  // const [items, setItems] = useState([]);
 
-  //     const getCategoriesList = () => {
-  //       axios({
-  //         method: "get",
-  //         url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product?allProduct=1`,
-  //         // params: {
-  //         //   allProduct: 1,
-  //         // },
-  //         headers: {
-  //           "Api-key": process.env.REACT_APP_API_KEY,
-  //           "Warehouse-Id": 1,
-  //         },
-  //       })
-  //         .then((response) => {
-  //           setItems(response.data.data);
-  //         })
-  //         .catch((error) => console.error(`Error: ${error}`));
-  //     };
-  //     useEffect(() => {
-  //       getCategoriesList();
-  //     }, []);
-  //     console.log(items);
-
-  //     //FILTERING DATA ON THE BASIS OF CATEGORY
-  //     const dairyItems = items.filter((item) => {
-  //       let itemList =
-  //         item.categorySlug === "dairy-products" && item.title === "Paneer - Theki";
-  //       return itemList;
-  //     });
-
-  //     const vegetableItems = items.filter((item) => {
-  //       let itemList =
-  //         item.categorySlug === "fresh-vegetabless" && item.title === "Beetroot";
-  //       return itemList;
-  //     });
-
-  //     const riceItems = items.filter((item) => {
-  //       let itemList =
-  //         item.categorySlug === "rice" &&
-  //         (item.title === "Anadi (Sticky) Rice Ashram" || item.title === "Test01");
-  //       return itemList;
-  //     });
-
-  //     console.log("Vegetable", vegetableItems);
-  //     console.log("Rice", riceItems);
-  //     console.log("dairyItems", dairyItems);
-
-  //     const hotofferItems = [...vegetableItems, ...riceItems, ...dairyItems];
   return (
     <div>
       {/* <!-- banner --> */}
@@ -209,7 +140,7 @@ function Main({ addToCart }) {
                 return (
                   <>
                     <div
-                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd"
+                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd "
                       key={item.id}
                     >
                       <div className="hover14 column">

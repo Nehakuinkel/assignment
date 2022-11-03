@@ -1,39 +1,12 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./category.css"
 
-function Categories({ addToCart, getProductDetails}) {
-  let { categoryslug } = useParams();
-  const [productList, setProductList] = useState([]);
-
-  const getAllProducts = () => {
-    axios({
-      method: "get",
-      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/product`,
-      params: {
-        allProduct: 1,
-      },
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-      },
-    })
-      .then((response) => {
-        setProductList(response.data.data);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
-  };
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-  console.log(productList);
-  // console.log(categoryslug)
+function Categories({ addToCart, getProductDetails , productList , setProductList  }) {
+   let { categoryslug } = useParams();
 
   const filterData = productList.filter((productData) => {
     return productData.categorySlug === categoryslug;
   });
-  console.log(filterData);
 
   return (
     <>
@@ -156,7 +129,6 @@ function Categories({ addToCart, getProductDetails}) {
                                   {/* <Link to="/single"> */}
                                   <button
                                     type="button"
-                                    value="Add to cart"
                                     className="button text-center"
                                     onClick={() => {
                                       getProductDetails(dataProduct);

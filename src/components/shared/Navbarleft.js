@@ -69,7 +69,7 @@ function Navbarleft() {
                                   return (
                                     <>
                                       <li>
-                                        <Link to={`/${subcat.slug}`}>
+                                        <Link to={`category/${subcat.slug}`}>
                                           {subcat.title}
                                         </Link>
                                       </li>
@@ -84,7 +84,7 @@ function Navbarleft() {
                     ) : (
                       <>
                         <li>
-                          <Link to={`/${category.slug}`}>
+                          <Link to={`category/${category.slug}`}>
                             {category.title}
                           </Link>
                         </li>

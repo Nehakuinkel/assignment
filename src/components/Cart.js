@@ -1,8 +1,11 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import "../cart.css";
 
-function Cart({ cart, setCart, increment, decrement, removeItem, total }) {
+function Cart({ cart, setCart, increment, decrement, removeItem, total, token }) {
+
   return (
     <>
       {/* <Header/> */}
@@ -21,7 +24,7 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total }) {
       </div>
       {/* <!-- //products-breadcrumb -->
 <!-- banner --> */}
-      <div className="banner">
+{token ?  <div className="banner">
         <div className="w3l_banner_nav_right">
           {/* <!-- about --> */}
           <div className="privacy about">
@@ -96,7 +99,13 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total }) {
           {/* <!-- //about --> */}
         </div>
         <div className="clearfix"></div>
+      </div> 
+      :
+      <div className="privacy about">
+            <h1>You are not Logged In</h1>
       </div>
+      }
+     
       {/* <!-- //banner --> */}
       {/* <Footer/> */}
     </>

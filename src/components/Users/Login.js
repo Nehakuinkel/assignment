@@ -4,10 +4,14 @@ import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
 import "../../form.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const navigate = useNavigate();
   const [status, setStatus] = useState();
+  const loginURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/auth/login`;
+  const signupURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/auth/signup`;
+
   const {
     register,
     handleSubmit,
@@ -19,46 +23,85 @@ function Login() {
 
   const handleRegistration = (data) => {
     if (window.location.pathname === "/login") {
-      axios({
-        method: "post",
-        url: "https://uat.ordering-farmshop.ekbana.net/api/v4/auth/login",
-        data: {
-          username: data.username,
-          password: data.password,
-          client_id: 2,
-          client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
-          grant_type: "password",
-        },
-        // 	headers: {
-        // 		"Api-key": process.env.API_KEY,
-        //   },
-      }).then((response) => {
-        console.log(response);
-        setStatus(response.status);
-        // let access_token = response.data.access_token;
-        // let refresh_token = response.data.refresh_token;
-        // let token_type = response.data.token_type;
-        // let expires_in = response.data.access_token;
-      });
+      const postLogin = async () => {
+        try {
+          const response = await axios({
+            method: "post",
+            url: loginURL,
+            data: {
+                  username: data.username,
+                  password: data.password,
+                  client_id: 2,
+                  client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
+                  grant_type: "password",
+                },
+          });
+          setStatus(response.status);
+            localStorage.setItem("status", response.status);
+            console.log(response.status);
+            localStorage.setItem("accessToken", response.data.access_token);
+            if (status === 200) {
+              toast.success("Login Successful")
+              navigate("/profile");  
+            }
+        } catch (err) {
+          console.log(err.response.data.errors[0].message);
+          toast.error(`Error: ${err.response.data.errors[0].message}`, {
+            style: {
+              border: '1px solid #713200',
+              padding: '16px',
+              color: 'Red',
+            },
+            iconTheme: {
+              primary: '#713200',
+              secondary: '#FFFAEE',
+            },
+          });
+        }
+        
+      };
+      postLogin();
     }
+
     if (window.location.pathname === "/signup") {
-      axios({
-        method: "post",
-        url: "https://uat.ordering-farmshop.ekbana.net/api/v4/auth/signup",
-        data: {
-          first_name: data.first_name,
-          last_name: data.last_name,
-          email: data.Email,
-          password: data.password,
-          mobile_number: data.Telephone,
-        },
-        // headers: {
-        // 	"Api-key": `${process.env.API_KEY}`,
-        // },
-      }).then((response) => {
-        console.log(response);
-        setStatus(response.status);
-      });
+      const postSignUp = async () => {
+        try {
+          const response = await axios({
+            method: "post",
+            url: signupURL,
+            data: {
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.Email,
+              password: data.password,
+              mobile_number: data.Telephone,
+            },
+            headers: {
+                	"Api-key": process.env.REAXT_APP_API_KEY,
+                },
+          });
+          setStatus(response.status);
+          console.log(response)
+            if (status === 201) {
+              toast.success("Successful Registration.") 
+              navigate("/login") 
+            }
+        } catch (err) {
+          console.log(err.response.data.errors[0].message);
+          toast.error(`Error: ${err.response.data.errors[0].message}`, {
+            style: {
+              border: '1px solid #713200',
+              padding: '16px',
+              color: 'Red',
+            },
+            iconTheme: {
+              primary: '#713200',
+              secondary: '#FFFAEE',
+            },
+          });
+        }
+      };
+      postSignUp();
     }
     resetField("username");
     resetField("first_name");
@@ -87,13 +130,13 @@ function Login() {
 
         <div className="banner">
           <div className="w3l_banner_nav_right">
-            <div className="w3_login">
+            <div className="w3_login ">
               {status === 200 && navigate("/")}
               <h3>Sign In</h3>
-              <div className="w3_login_module">
-                <div className="module form-module">
+              <div className="w3_login_module ">
+                <div className="module form-module form-box">
                   <div>
-                    <h2>Login to your account</h2>
+                    <h2 className="text-center">Login to your account</h2>
                     <form
                       onSubmit={handleSubmit(handleRegistration)}
                       action="#"
@@ -117,17 +160,19 @@ function Login() {
                         name="password"
                         {...register("password")}
                       />
-                      {errors?.password && (
-                        <span className="error-text">
-                          {errors.password.message}
-                        </span>
-                      )}
+                      <div className="link-cls">
+                        <Link to="/forgetPassword" className="linking">Forgot your password?</Link>
+                      </div>
                       <input type="submit" value="Login" />
                     </form>
                   </div>
-                  <div className="cta">
-                    <Link to="/forgetPassword">Forgot your password?</Link>
+                  {/* <div className="cta"> */}
+                  <div className="link-fir">
+                    <p>Don't have an account? <Link  to="/signup" className="linking">Sign Up</Link>  </p>
+                        
                   </div>
+                    
+                  {/* </div> */}
                 </div>
               </div>
             </div>
@@ -199,26 +244,11 @@ function Login() {
         <div className="banner">
           <div className="w3l_banner_nav_right">
             <div className="w3_login">
-              {status === 201 && (
-                <div class="alert alert-success alert-dismissible" role="alert">
-                  <strong>Account Created Successfully.</strong>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  {navigate("/login")}
-                </div>
-              )}
-
               <h3>Sign Up</h3>
               <div className="w3_login_module">
-                <div className="module form-module">
+                <div className="module form-module form-box">
                   <div>
-                    <h2>Create an account</h2>
+                    <h2 className="text-center">Create an account</h2>
                     <form
                       onSubmit={handleSubmit(handleRegistration)}
                       action="#"
@@ -281,9 +311,7 @@ function Login() {
                       <input type="submit" value="Register" />
                     </form>
                   </div>
-                  <div className="cta">
-                    <Link to="forgetPassword">Forgot your password?</Link>
-                  </div>
+                  
                 </div>
               </div>
             </div>

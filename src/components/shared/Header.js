@@ -1,9 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
+import { useForm } from "react-hook-form";
 
+function Header({setSearchData,searchData}) {
+  const navigate = useNavigate();
+  const [token, setToken] = useState();
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm({
+    mode: "onTouched",
+  });
+  const handleRegistration = (data) => {
+   setSearchData(data);
+   navigate("/search")
+   resetField('search')
+  }
+  console.log(searchData)
 
-function Header() {
+  useEffect(() => {
+    setToken(localStorage.getItem("accessToken"));
+  }, []);
+  const logout = () => {
+    setToken(localStorage.clear());
+    navigate("/");
+  };
+  
   return (
     <div>
       <div className="agileits_header">
@@ -11,12 +36,16 @@ function Header() {
           <Link to="products">Today's special Offers !</Link>
         </div>
         <div className="w3l_search">
-          <form action="#" method="post">
+          <form
+            onSubmit={handleSubmit(handleRegistration)}
+            action="/search"
+            method="post"
+          >
             <input
               type="text"
               name="Product"
-              placeholder="Search a Product" 
-              
+              placeholder="Search a Product"
+              {...register("search")}
             />
             <input type="submit" value=" " />
           </form>
@@ -37,31 +66,69 @@ function Header() {
             </fieldset>
           </form>
         </div>
-        <div className="w3l_header_right">
-          <ul>
-            <li className="dropdown profile_details_drop">
-              <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
-                <i className="fa fa-user" aria-hidden="true">
-                  <h6>Avatar</h6>
-                </i>
-                <span className="caret"></span>
-              </Link>
+        {token ? (
+          <div className="w3l_header_right">
+            <ul>
+              <li className="dropdown profile_details_drop">
+                <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <i className="fa fa-user" aria-hidden="true">
+                    <h6>Hello User</h6>
+                  </i>
+                  <span className="caret"></span>
+                </Link>
 
-              <div className="mega-dropdown-menu">
-                <div className="w3ls_vegetables">
-                  <ul className="dropdown-menu drp-mnu">
-                    <li>
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                      <Link to="/signup">Sign Up</Link>
-                    </li>
-                  </ul>
+                <div className="mega-dropdown-menu">
+                  <div className="w3ls_vegetables">
+                    <ul className="dropdown-menu drp-mnu">
+                      <li>
+                        <Link to="/profile">
+                          <button className="user-btn">Profile</button>
+                        </Link>
+                      </li>
+                      <li>
+                        <button
+                          className="user-btn"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="w3l_header_right">
+            <ul>
+              <li className="dropdown profile_details_drop">
+                <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <i className="fa fa-user" aria-hidden="true">
+                    <h6>Avatar</h6>
+                  </i>
+                  <span className="caret"></span>
+                </Link>
+
+                <div className="mega-dropdown-menu">
+                  <div className="w3ls_vegetables">
+                    <ul className="dropdown-menu drp-mnu">
+                      <li>
+                        <Link to="/login">Login</Link>
+                      </li>
+                      <li>
+                        <Link to="/signup">Sign Up</Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div className="w3l_header_right1">
           <h2>
             <Link to="mail">Contact Us</Link>

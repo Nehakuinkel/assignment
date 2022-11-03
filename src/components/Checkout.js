@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import { registerOptions } from "./shared/formValidate";
 import "./checkout.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-
-
-function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
+function Checkout({ cart, setCart, increment, decrement, removeItem, total, token }) {
   const {
     register,
     handleSubmit,
@@ -19,26 +18,61 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total }) {
 
   const handleRegistration = (data) => {
     console.log(data);
-    axios({
-      method: "post",
-      url: "https://uat.ordering-farmshop.ekbana.net/api/v4/delivery-address",
-      data: {
-        title: data.place,
-        latitude: data.latitude,
-        longitude: data.longitude,
-        customer: data.name,
-        contact_no: data.contactNumber,
-        isDefault: true
-      },
-      	headers: {
-      		"Api-key": process.env.REACT_APP_API_KEY,
-        },
-        Authorization:{
-          access_token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY4YWIyNmM4NjRlZTZkNTEwNDcyODZjMjgyMzA5ZmVlMTY5ZTFiZDA2ZTQxODY1OTA3M2RlNmI0OWMyNTM0MGFkZTU4NDc0ZmI0YTk0NGIyIn0.eyJhdWQiOiIyIiwianRpIjoiNjhhYjI2Yzg2NGVlNmQ1MTA0NzI4NmMyODIzMDlmZWUxNjllMWJkMDZlNDE4NjU5MDczZGU2YjQ5YzI1MzQwYWRlNTg0NzRmYjRhOTQ0YjIiLCJpYXQiOjE2NjY5Nzg1MDQsIm5iZiI6MTY2Njk3ODUwNCwiZXhwIjoxNjc0OTI3MzA0LCJzdWIiOiI4MjMiLCJzY29wZXMiOltdfQ.G0U9C4eoYSdXGPnwecIelNcfi3gyiv1HdJFF7MIuOaJqIRFpSX85Xj0Em9wKe2RqaUDsCziaomp2tH4NCB_FjF09w-vZf81xLNgeDpa3dVqjKsomEYk2m-kgl9L04Aaotyse6LM8cV4KFssnlbb4w6PvP2sS-e45ZlAe8uK__MRfwLdDtHQDWDLGtvjez5r3opZP-hrnLy6Xuj35SjNL6tjHOWQ1JkyTjs2Y9S1NLLnOHqyCecfcLWwSRDKHmirS4elJfKS2V0o79M9B4T2heAR2Lx2hRxU5odvwWDd0Vlq0Br14YuSfHa6EQ8aInnnusY_brexe88tYRfwc0vy3zImZGjRzUOXt49zk4eRH1RdV9-spewnSxzz-tNIMbsI5dZRyNo4ROkznHKkS0P7Nc6vzZbWAGRAsb06wdzy4_p0XZBLkaKdeSyL3-4NdLxmjPu3t0te_SmHGG3dVedXtRpGbBsOyzXwQzKe8BW0olkcJgTQSkq43UIAL-z1CzCHZpXJiYuvQ7HJDuemB4fAU20B_e7FjY8zUw4nFlJTjDUIn6TNmw3Fs57-AWmjvDyz1z-XXhaOXd1tFwHz8gvnFiHTElbyrGNixRwKirkw4ei06SVTXSHVOcePl2TbkooDtO8fK8UgsQITJhRzSMJKodXw_8C2LmyXqBmaij7VisUE"
-        },
-    }).then((response) => {
-      console.log(response);
+    const bulkDatas = cart.map((item) => {
+      let datas = {
+        productId: item.id,
+        priceId: item.unitPrice[0].id,
+        quantity: item.orderedQuantity,
+        note: "string",
+      };
+      return datas;
     });
+    const setBulkDataToApi = async () => {
+      let config = {
+        method: "post",
+        url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart/bulk`,
+        data: {
+          data: bulkDatas,
+        },
+        headers: {
+          "Api-key": process.env.REACT_APP_API_KEY,
+          "Warehouse-Id": 1,
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      let res = await axios(config);
+      console.log(res, "Bulk Data");
+    };
+    const setDeliveryAddress = async () => {
+      let config = {
+        method: "get",
+        url: `https://uat.ordering-farmshop.ekbana.net/api/v4/profile/show`,
+        data: {
+          title: data.place,
+          latitude: data.latitude,
+          longitude: data.longitude,
+          customer: data.name,
+          contact: data.contactNumber,
+          isDefault: true,
+        },
+        headers: {
+          "Api-key": process.env.REACT_APP_API_KEY,
+          "Warehouse-Id": 1,
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      let res = await axios(config);
+      console.log(res);
+      if (res.status === 200) {
+        toast.success("Ordered Confirmed.");
+      }
+    };
+
+    setDeliveryAddress();
+    setBulkDataToApi();
+
+
     resetField("place");
     resetField("latitude");
     resetField("longitude");

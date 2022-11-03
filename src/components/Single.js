@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 import "./single.css";
 
 function Single({ productDetailsData, addToCart }) {
-  // const addToCart = () => {
-  //   console.log("hello")
-  // }
   console.log("addToCart", addToCart)
   return (
     <>
-      {/* <Header/> */}
-      {/* <!-- products-breadcrumb --> */}
       <div className="products-breadcrumb">
         <div className="container">
           <ul>
@@ -23,8 +18,6 @@ function Single({ productDetailsData, addToCart }) {
           </ul>
         </div>
       </div>
-      {/* <!-- //products-breadcrumb -->
-<!-- banner --> */}
       <div className="banner">
         <div className="w3l_banner_nav_right">
           <div className="w3l_banner_nav_right_banner3">
@@ -93,38 +86,6 @@ function Single({ productDetailsData, addToCart }) {
                     />
                   </div>
                 </div>
-                {/* <div className="snipcart-details agileinfo_single_right_details">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input
-                        type="hidden"
-                        name="item_name"
-                        value="pulao basmati rice"
-                      />
-                      <input type="hidden" name="amount" value="21.00" />
-                      <input
-                        type="hidden"
-                        name="discount_amount"
-                        value="1.00"
-                      />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input
-                        type="submit"
-                        name="submit"
-                        value="Add to cart"
-                        className="button"
-                        onClick={() => {
-                                      addToCart(productDetailsData);
-                                    }}
-                      />
-                    </fieldset>
-                  </form>
-                </div> */}
               </div>
             </div>
             <div className="clearfix"> </div>
@@ -173,44 +134,6 @@ function Single({ productDetailsData, addToCart }) {
                             className="button"
                           />
                         </div>
-
-                        {/* <div className="snipcart-details">
-                          <form action="#" method="post">
-                            <fieldset>
-                              <input type="hidden" name="cmd" value="_cart" />
-                              <input type="hidden" name="add" value="1" />
-                              <input type="hidden" name="business" value=" " />
-                              <input
-                                type="hidden"
-                                name="item_name"
-                                value="knorr instant soup"
-                              />
-                              <input type="hidden" name="amount" value="3.00" />
-                              <input
-                                type="hidden"
-                                name="discount_amount"
-                                value="1.00"
-                              />
-                              <input
-                                type="hidden"
-                                name="currency_code"
-                                value="USD"
-                              />
-                              <input type="hidden" name="return" value=" " />
-                              <input
-                                type="hidden"
-                                name="cancel_return"
-                                value=" "
-                              />
-                              <input
-                                type="submit"
-                                name="submit"
-                                value="Add to cart"
-                                className="button"
-                              />
-                            </fieldset>
-                          </form>
-                        </div> */}
                       </div>
                     </figure>
                   </div>
@@ -988,8 +911,6 @@ function Single({ productDetailsData, addToCart }) {
           </div>
         </div>
       </div>
-      {/* <!-- //brands --> */}
-      {/* <Footer/> */}
     </>
   );
 }
