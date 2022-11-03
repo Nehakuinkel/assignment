@@ -12,7 +12,7 @@ width:40%;
 
 .wrapper{
     display: flex;
-    background-color: rgb(238, 238, 248);
+    margin-top: 15px;
     width:80%;
     height: 200px;
 }
@@ -27,8 +27,18 @@ width:40%;
     flex-direction: column;
     margin-top: 2rem;
     margin-left: 25rem;
+
 }
 
-.controls{
-    
+.details p{
+margin-bottom: 20px;
 }
+
+.prof-btn{
+    margin-left: 10rem;
+   
+}
+.link-btn{
+    color: green;
+}
+

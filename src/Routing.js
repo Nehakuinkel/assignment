@@ -24,13 +24,18 @@ import Search from "./components/shared/Search";
 
 function Routing({ setSearchData, searchData }) {
   const [productDetailsData, setproductDetailsData] = useState([]);
+  const [cartDetails, setCartDetails] = useState([]);
+  const [apiCart, setapiCart] = useState([]);
   const [token, setToken] = useState();
   const navigate = useNavigate();
   const [productList, setProductList] = useState([]);
   let productURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/product`;
   let addToCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product`;
+  //let deleteCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product`;
+  let getCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart`;
 
   // API Call To get all products....
+  useEffect(() => {
   const getAllProducts = () => {
     axios({
       method: "get",
@@ -48,10 +53,9 @@ function Routing({ setSearchData, searchData }) {
       })
       .catch((error) => console.error(`Error: ${error}`));
   };
-  useEffect(() => {
-    getAllProducts();
+  getAllProducts(); 
   }, []);
-  console.log("productList", productList);
+  // console.log("productList", productList);
 
   // set Access Token to local Storage
   useEffect(() => {
@@ -67,31 +71,89 @@ function Routing({ setSearchData, searchData }) {
         return product.title.toLowerCase().includes(searchData.search);
       })
     );
-  console.log("filteredSearch", filteredSearch);
 
   // Api call to add products to cart
-  // const addToCartItems = async (cartData) => {
-  //   let config = {
-  //     method: "post",
-  //     url: addToCartURL,
-  //     data: {
-  //       "productId": cartData.id,
-  //       "priceId": cartData.unitPrice[0].id,
-  //       "quantity": cartData.orderedQuantity,
-  //       "note": "testing"
-  //     },
-  //     headers: {
-  //       "Api-key": process.env.REACT_APP_API_KEY,
-  //       "Warehouse-Id": 1,
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   let res = await axios(config);
-  //   console.log(res);
-  //   if (res.status === 200) {
-  //     toast.success("Ordered Confirmed.");
-  //   }
-  // };
+  const addToCartItems = async (cartData) => {
+    let response = await axios({
+      method: "post",
+      url: addToCartURL,
+      data: {
+        productId: cartData.id,
+        priceId: cartData.unitPrice[0].id,
+        quantity: cartData.orderedQuantity,
+        note: "testing",
+      },
+      headers: {
+        "Api-key": process.env.REACT_APP_API_KEY,
+        "Warehouse-Id": 1,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    //console.log("response from add cart", response);
+    // if (response.status === 200) {
+    //   toast.success("Products add to cart");
+    // }
+  };
+
+  // API call to get cart items
+  const getCartItemsAPI = async () => {
+    let response = await axios({
+      method: "get",
+      url: getCartURL,
+      headers: {
+        "Api-key": process.env.REACT_APP_API_KEY,
+        "Warehouse-Id": 1,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("response from add cart", response);
+    if (response.status === 200) {
+      setapiCart(response.data.data.cartProducts);
+      setCartDetails(response.data.data);
+    }
+  };
+
+  useEffect(() => {
+    getCartItemsAPI();
+  }, [token]);
+  console.log("from carts", apiCart);
+  // console.log("Cart Details", cartDetails);
+
+  //Delete Items From cart API
+  const deleteCartItems = async (data) => {
+    let config = {
+      method: "delete",
+      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product/${data}`,
+
+      headers: {
+        "Api-key": process.env.REACT_APP_API_KEY,
+        "Warehouse-Id": 1,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    let res = await axios(config);
+    console.log(res, "Delete");
+  };
+  
+
+  //Update Cart quantity
+  const updateCart = async (id, quantity) => {
+    let response = await axios({
+      method: "patch",
+      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product/${id}`,
+      data: {
+        quantity: quantity,
+        note: "hello",
+      },
+      headers: {
+        "Api-key": process.env.REACT_APP_API_KEY,
+        "Warehouse-Id": 1,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("response from update cart", response);
+  };
 
   //Get Details Of a single product
   const getProductDetails = (productDetail) => {
@@ -101,32 +163,36 @@ function Routing({ setSearchData, searchData }) {
   };
 
   // Get Items added to cart From local storage
-  const getItemsFromLocalStorage = () => {
-    let output = localStorage.getItem("addedItems");
-    if (output) {
-      return JSON.parse(output);
-    } else {
-      return [];
-    }
-  };
+  // const getItemsFromLocalStorage = () => {
+  //   let output = localStorage.getItem("addedItems");
+  //   if (output) {
+  //     return JSON.parse(output);
+  //   } else {
+  //     return [];
+  //   }
+  // };
 
   // When Add to cart button is clicked....
-  const [cart, setCart] = useState(getItemsFromLocalStorage());
+  // const [cart, setCart] = useState(getItemsFromLocalStorage());
   const addToCart = (data) => {
-    // console.log("data", data);
+    console.log("apicart",apiCart)
+    console.log("data", data);
     if (token) {
-      console.log("Logged In Successfully");
-      const exist = cart.find((item) => {
-        return item.id === data.id;
+      // console.log("Logged In Successfully");
+      const exist = apiCart.find((item) => {
+       
+        return item.product.id === data.id;
       });
+      
       if (exist) {
+        
         toast.error("Item already exist.");
       } else {
-        toast.success("Item Added Successfully.");
-        const addItemToCartApi = { ...data, orderedQuantity: 1 };
-        // console.log("addItemToCartApi", addItemToCartApi)
-        setCart([...cart, addItemToCartApi]);
-        // addToCartItems(addItemToCartApi)
+        toast.success("Item Added to Cart.");
+      const addItemToCartApi = { ...data, orderedQuantity: 1 };
+      console.log("addItemToCartApi", addItemToCartApi);
+      // setCart([...cart, addItemToCartApi]);
+      addToCartItems(addItemToCartApi);
       }
     } else {
       console.log("Please login or signup to add products to cart.");
@@ -136,48 +202,58 @@ function Routing({ setSearchData, searchData }) {
   // console.log(cart);
 
   // Increment Handler
-  const increment = (id) => {
-    const updatedData = cart.map((item) => {
-      if (item.id === id) {
-        return { ...item, orderedQuantity: item.orderedQuantity + 1 };
-      } else {
-        return item;
-      }
-    });
-    setCart(updatedData);
+  const increment = (id, quantity) => {
+    updateCart(id, quantity + 1);
+    // const updatedData = cart.map((item) => {
+    //   if (item.id === id) {
+    //     return { ...item, orderedQuantity: item.orderedQuantity + 1 };
+    //   } else {
+    //     return item;
+    //   }
+    // });
+    // setCart(updatedData);
     // console.log(cart);
   };
 
   //decrement Handler
-  const decrement = (id) => {
-    let updateItems = cart.map((item) => {
-      if (item.id === id && item.orderedQuantity > 1) {
-        return { ...item, orderedQuantity: item.orderedQuantity - 1 };
-      } else {
-        return item;
-      }
-    });
-    setCart(updateItems);
+  const decrement = (id, quantity) => {
+    updateCart(id, quantity - 1);
+    // let updateItems = cart.map((item) => {
+    //   if (item.id === id && item.orderedQuantity > 1) {
+    //     return { ...item, orderedQuantity: item.orderedQuantity - 1 };
+    //   } else {
+    //     return item;
+    //   }
+    // });
+    // setCart(updateItems);
   };
 
   // To Remove Item from cart
   const removeItem = (id) => {
-    const deleteItem = cart.filter((item) => {
-      return item.id !== id;
-    });
-    setCart(deleteItem);
+    deleteCartItems(id);
+    // console.log("Delete Items", id)
+    // const deleteItem = cart.filter((item) => {
+    //   return item.id !== id;
+    // });
+    // setCart(deleteItem);
   };
 
-  // To Count Total from cart
-  const total = cart.reduce((acc, val) => {
-    acc += val.orderedQuantity * val.unitPrice[0].newPrice;
+  // // To Count Total from cart
+  // const total = cart.reduce((acc, val) => {
+  //   acc += val.orderedQuantity * val.unitPrice[0].newPrice;
+  //   return acc;
+  // }, 0);
+
+  // Total for Api cart Items
+  const total = apiCart.reduce((acc, val) => {
+    acc += val.quantity * val.price;
     return acc;
   }, 0);
 
   //To add Items to Cart in Local Storage
-  useEffect(() => {
-    localStorage.setItem("addedItems", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("addedItems", JSON.stringify(cart));
+  // }, [cart]);
 
   return (
     <Routes>
@@ -227,8 +303,10 @@ function Routing({ setSearchData, searchData }) {
         path="cart"
         element={
           <Cart
-            cart={cart}
-            setCart={setCart}
+            apiCart={apiCart}
+            cartDetails={cartDetails}
+            /* cart={cart}
+            setCart={setCart} */
             increment={increment}
             decrement={decrement}
             removeItem={removeItem}
@@ -244,8 +322,8 @@ function Routing({ setSearchData, searchData }) {
           <Checkout
             token={token}
             setToken={setToken}
-            cart={cart}
-            setCart={setCart}
+            apiCart={apiCart}
+            cartDetails={cartDetails}
             increment={increment}
             decrement={decrement}
             removeItem={removeItem}

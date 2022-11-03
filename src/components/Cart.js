@@ -1,10 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../cart.css";
 
-function Cart({ cart, setCart, increment, decrement, removeItem, total, token }) {
+function Cart({ cart, cartDetails,apiCart, increment, decrement, removeItem, total, token }) {
+    
 
   return (
     <>
@@ -22,8 +21,7 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total, token })
           </ul>
         </div>
       </div>
-      {/* <!-- //products-breadcrumb -->
-<!-- banner --> */}
+      
 {token ?  <div className="banner">
         <div className="w3l_banner_nav_right">
           {/* <!-- about --> */}
@@ -34,28 +32,28 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total, token })
 
             <div className="checkout-right">
               <h4>
-                Your shopping cart contains: <span>{cart.length} Products</span>
+                Your shopping cart contains: <span>{apiCart.length} Products</span>
               </h4>
             </div>
-            {cart.map((item, index) => {
+            {apiCart.map((item, index) => {
               return (
                 <>
                   <div className="cartItems mb-3">
                     <h4>{index + 1}</h4>
-                    <span className="cartName">{item.title}</span>
-                    <img src={item.images[0].imageName} alt=" " className="cart-img" />
+                    <span className="cartName">{item.product.title}</span>
+                    <img src={item.product.images[0].imageName} alt=" " className="cart-img" />
                     <div className="qty">
                       <button
-                        onClick={() => decrement(item.id)}
+                        onClick={() => decrement(item.id, item.quantity)}
                         className="cartbtn btn btn-danger"
                         type="submit"
                       >
                         -
                       </button>
 
-                      <span className="quantity">{item.orderedQuantity}</span>
+                      <span className="quantity">{item.quantity}</span>
                       <button
-                        onClick={() => increment(item.id)}
+                        onClick={() => increment(item.id,item.quantity)}
                         className="cartbtn btn btn-success"
                         type="submit"
                       >
@@ -63,7 +61,7 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total, token })
                       </button>
                     </div>
                     <p className="price">
-                      {item.unitPrice[0].newPrice * item.orderedQuantity}
+                      {item.price * item.quantity}
                     </p>
                     <button onClick={() => removeItem(item.id)}>
                       Remove
@@ -73,7 +71,7 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total, token })
                 </>
               );
             })}
-            {cart.length>0 &&(
+            {apiCart.length>0 &&(
               <>
               <div>
                   <p className="total">
@@ -101,8 +99,9 @@ function Cart({ cart, setCart, increment, decrement, removeItem, total, token })
         <div className="clearfix"></div>
       </div> 
       :
-      <div className="privacy about">
-            <h1>You are not Logged In</h1>
+      <div className="privacy about text-center">
+            <h1>Please Login to View Item on cart</h1>
+            <div className="clearfix"></div>
       </div>
       }
      

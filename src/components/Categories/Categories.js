@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import "./category.css"
 
-function Categories({ addToCart, getProductDetails , productList , setProductList  }) {
+function Categories({ addToCart, getProductDetails , productList   }) {
    let { categoryslug } = useParams();
 
   const filterData = productList.filter((productData) => {

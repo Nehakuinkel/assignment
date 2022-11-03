@@ -29,36 +29,35 @@ function Login() {
             method: "post",
             url: loginURL,
             data: {
-                  username: data.username,
-                  password: data.password,
-                  client_id: 2,
-                  client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
-                  grant_type: "password",
-                },
+              username: data.username,
+              password: data.password,
+              client_id: 2,
+              client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
+              grant_type: "password",
+            },
           });
           setStatus(response.status);
-            localStorage.setItem("status", response.status);
-            console.log(response.status);
-            localStorage.setItem("accessToken", response.data.access_token);
-            if (status === 200) {
-              toast.success("Login Successful")
-              navigate("/profile");  
-            }
+          localStorage.setItem("status", response.status);
+          console.log(response.status);
+          localStorage.setItem("accessToken", response.data.access_token);
+          if (status === 200) {
+            toast.success("Login Successful");
+            navigate("/profile");
+          }
         } catch (err) {
           console.log(err.response.data.errors[0].message);
           toast.error(`Error: ${err.response.data.errors[0].message}`, {
             style: {
-              border: '1px solid #713200',
-              padding: '16px',
-              color: 'Red',
+              border: "1px solid #713200",
+              padding: "16px",
+              color: "Red",
             },
             iconTheme: {
-              primary: '#713200',
-              secondary: '#FFFAEE',
+              primary: "#713200",
+              secondary: "#FFFAEE",
             },
           });
         }
-        
       };
       postLogin();
     }
@@ -77,26 +76,26 @@ function Login() {
               mobile_number: data.Telephone,
             },
             headers: {
-                	"Api-key": process.env.REAXT_APP_API_KEY,
-                },
+              "Api-key": process.env.REACT_APP_API_KEY,
+            },
           });
           setStatus(response.status);
-          console.log(response)
-            if (status === 201) {
-              toast.success("Successful Registration.") 
-              navigate("/login") 
-            }
+          console.log(response);
+          if (response.status === 201) {
+            toast.success("Successful Registration.");
+            navigate("/login");
+          }
         } catch (err) {
           console.log(err.response.data.errors[0].message);
           toast.error(`Error: ${err.response.data.errors[0].message}`, {
             style: {
-              border: '1px solid #713200',
-              padding: '16px',
-              color: 'Red',
+              border: "1px solid #713200",
+              padding: "16px",
+              color: "Red",
             },
             iconTheme: {
-              primary: '#713200',
-              secondary: '#FFFAEE',
+              primary: "#713200",
+              secondary: "#FFFAEE",
             },
           });
         }
@@ -161,17 +160,23 @@ function Login() {
                         {...register("password")}
                       />
                       <div className="link-cls">
-                        <Link to="/forgetPassword" className="linking">Forgot your password?</Link>
+                        <Link to="/forgetPassword" className="linking">
+                          Forgot your password?
+                        </Link>
                       </div>
                       <input type="submit" value="Login" />
                     </form>
                   </div>
                   {/* <div className="cta"> */}
                   <div className="link-fir">
-                    <p>Don't have an account? <Link  to="/signup" className="linking">Sign Up</Link>  </p>
-                        
+                    <p>
+                      Don't have an account?{" "}
+                      <Link to="/signup" className="linking">
+                        Sign Up
+                      </Link>{" "}
+                    </p>
                   </div>
-                    
+
                   {/* </div> */}
                 </div>
               </div>
@@ -311,7 +316,6 @@ function Login() {
                       <input type="submit" value="Register" />
                     </form>
                   </div>
-                  
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ import "./checkout.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-function Checkout({ cart, setCart, increment, decrement, removeItem, total, token }) {
+function Checkout({  apiCart, increment, decrement, removeItem, total, token }) {
   const {
     register,
     handleSubmit,
@@ -18,32 +18,7 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
 
   const handleRegistration = (data) => {
     console.log(data);
-    const bulkDatas = cart.map((item) => {
-      let datas = {
-        productId: item.id,
-        priceId: item.unitPrice[0].id,
-        quantity: item.orderedQuantity,
-        note: "string",
-      };
-      return datas;
-    });
-    const setBulkDataToApi = async () => {
-      let config = {
-        method: "post",
-        url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart/bulk`,
-        data: {
-          data: bulkDatas,
-        },
-        headers: {
-          "Api-key": process.env.REACT_APP_API_KEY,
-          "Warehouse-Id": 1,
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      };
-      let res = await axios(config);
-      console.log(res, "Bulk Data");
-    };
+   
     const setDeliveryAddress = async () => {
       let config = {
         method: "get",
@@ -70,7 +45,6 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
     };
 
     setDeliveryAddress();
-    setBulkDataToApi();
 
 
     resetField("place");
@@ -110,28 +84,28 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
 
             <div className="checkout-right">
               <h4>
-                Your shopping cart contains: <span>{cart.length} Products</span>
+                Your shopping cart contains: <span>{apiCart.length} Products</span>
               </h4>
             </div>
-            {cart.map((item, index) => {
+            {apiCart.map((item, index) => {
               return (
                 <>
                   <div className="cartItems mb-3">
                     <h4>{index + 1}</h4>
-                    <span className="cartName">{item.title}</span>
-                    <img src={item.images[0].imageName} alt=" " className="cart-img" />
+                    <span className="cartName">{item.product.title}</span>
+                    <img src={item.product.images[0].imageName} alt=" " className="cart-img" />
                     <div className="qty">
                       <button
-                        onClick={() => decrement(item.id)}
+                        onClick={() => decrement(item.id, item.quantity)}
                         className="cartbtn"
                         type="submit"
                       >
                         -
                       </button>
 
-                      <span className="quantity">{item.orderedQuantity}</span>
+                      <span className="quantity">{item.quantity}</span>
                       <button
-                        onClick={() => increment(item.id)}
+                        onClick={() => increment(item.id, item.quantity)}
                         className="cartbtn"
                         type="submit"
                       >
@@ -139,7 +113,7 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
                       </button>
                     </div>
                     <p className="price">
-                      {item.unitPrice[0].newPrice * item.orderedQuantity}
+                    {item.price * item.quantity}
                     </p>
                     <button onClick={() => removeItem(item.id)}>
                       Remove
@@ -149,7 +123,7 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
                 </>
               );
             })}
-            {cart.length>0 &&(
+            {apiCart.length>0 &&(
               <>
               <div>
                   <p className="total">
@@ -162,11 +136,11 @@ function Checkout({ cart, setCart, increment, decrement, removeItem, total, toke
               <div className="col-md-4 checkout-left-basket">
                 <h4>Basket List</h4>
                 <ul>
-                {cart.map((item) => {
+                {apiCart.map((item) => {
                   return(
                     <>
                     <li>
-                    {item.title} <i>-</i> <span>{item.unitPrice[0].newPrice} </span>
+                    {item.product.title} <i>-</i> <span>{item.price} </span>
                   </li>
                     </>
                   )

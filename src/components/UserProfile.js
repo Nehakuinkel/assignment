@@ -8,7 +8,6 @@ function UserProfile({ token, setToken }) {
   const navigate = useNavigate();
   const [userList, setUserList] = useState([]);
   let userURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/profile/show`;
-  let addToCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart`;
   const getProfile = async () => {
     try {
       const response = await axios({
@@ -30,68 +29,59 @@ function UserProfile({ token, setToken }) {
   }, [token]);
   console.log("userList", userList);
 
-
-  // const getApiCartItems = async () => {
-  //   let config = {
-  //     method: "get",
-  //     url: addToCartURL,
-  //     headers: {
-  //       "Api-key": process.env.REACT_APP_API_KEY,
-  //       "Warehouse-Id": 1,
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-  //   let res = await axios(config);
-  //   console.log(res);
-  //   if (res.status === 200) {
-  //     toast.success("Ordered Confirmed.");
-  //   }
-  // };
-  // getApiCartItems()
-
-
-  const logout = () => {
-    setToken(localStorage.clear());
-    navigate("/");
-  };
   return (
     <>
-      <div className="banner">
-        <h3> Manage Profile </h3>
-        <div className="wrapper">
-          <div className="prof-right">
-            <img
-              className="pro-img"
-              src={userList.image}
-              alt="user Profile"
-            ></img>
-            <p>
-              {userList.firstName} {userList.lastName}
-            </p>
-          </div>
-          <div className="details">
-            <form>
-              <div className="controls">
-                <label className="control-label"> Email: </label>
-                <input type="text" value={userList.email} />
-              </div>
-              <div className="controls">
-                <label className="control-label"> Mobile Number: </label>
-                <input type="text" value={userList.mobileNumber} />
-              </div>
-            </form>
-          </div>
+      <div className="products-breadcrumb">
+        <div className="container">
+          <ul>
+            <li>
+              <i className="fa fa-home" aria-hidden="true"></i>
+              <Link to="/">Home</Link>
+              <span>|</span>
+            </li>
+            <li>User Profile</li>
+          </ul>
         </div>
       </div>
-      <h1> This is Home Page</h1>
-
-      <button
-        onClick={() => {
-          logout();
-        }}
-      >
-        Logout
-      </button>
+      {/* <!-- //products-breadcrumb -->
+<!-- banner --> */}
+      <div className="banner">
+        <div className="w3l_banner_nav_right">
+          <div className="events">
+            <h3>Manage Profile</h3>
+            <div className="wrapper">
+              <div className="prof-right">
+                <img
+                  className="pro-img"
+                  src={userList.image}
+                  alt="user Profile"
+                ></img>
+                <p>
+                  {userList.firstName} {userList.lastName}
+                </p>
+                <Link className="link-btn">Change Profile Photo</Link>
+              </div>
+              <div className="details">
+                <label>Full Name </label>
+                <p>
+                  {userList.firstName} {userList.lastName}
+                </p>
+                <label>Email</label>
+                <p>{userList.email} </p>
+                <label>Contact Number</label>
+                <p> {userList.mobileNumber} </p>
+                <div className="prof-btn">
+                  <Link className="link-btn">
+                    <button>Update Profile</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <!-- //events --> */}
+        </div>
+        <div className="clearfix"></div>
+      </div>
     </>
   );
 }

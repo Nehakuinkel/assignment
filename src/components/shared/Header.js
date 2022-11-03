@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function Header({setSearchData,searchData}) {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ function Header({setSearchData,searchData}) {
   }, []);
   const logout = () => {
     setToken(localStorage.clear());
+    toast.success("Logout Successfully.")
     navigate("/");
   };
   
@@ -81,9 +83,10 @@ function Header({setSearchData,searchData}) {
                   <div className="w3ls_vegetables">
                     <ul className="dropdown-menu drp-mnu">
                       <li>
-                        <Link to="/profile">
-                          <button className="user-btn">Profile</button>
-                        </Link>
+                        <button className="user-btn" onClick={() => navigate("/profile")}>Profile</button>
+                      </li>
+                      <li>
+                      <button className="user-btn" onClick={() => navigate("/order")}>Order List</button>
                       </li>
                       <li>
                         <button

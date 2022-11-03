@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import "./main.css"
 function Main({ addToCart, productList }) {
   let imglink =
     "https://uat.ordering-farmshop.ekbana.net/storage/placeholder/placeholder-web.png";
@@ -132,9 +132,9 @@ function Main({ addToCart, productList }) {
       </div>
       {/* <!-- top-brands --> */}
       <div className="top-brands">
-        <div className="container">
+        <div className="container ">
           <h3 className="w3l_fruit">Hot Offers</h3>
-          <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
+          <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg mainDiv">
             {imgData.length > 0 ? (
               imgData.map((item) => {
                 return (
