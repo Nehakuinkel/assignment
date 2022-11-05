@@ -144,7 +144,7 @@ function Main({ addToCart, productList }) {
                       key={item.id}
                     >
                       <div className="hover14 column">
-                        <div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                        <div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid ">
                           <div className="tag">
                             <img
                               src="../Assets/images/tag.png"

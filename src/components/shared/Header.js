@@ -24,13 +24,13 @@ function Header({setSearchData,searchData}) {
 
   useEffect(() => {
     setToken(localStorage.getItem("accessToken"));
-  }, []);
+  }); 
+
   const logout = () => {
     setToken(localStorage.clear());
     toast.success("Logout Successfully.")
     navigate("/");
   };
-  
   return (
     <div>
       <div className="agileits_header">

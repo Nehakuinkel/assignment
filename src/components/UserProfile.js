@@ -59,7 +59,9 @@ function UserProfile({ token, setToken }) {
                 <p>
                   {userList.firstName} {userList.lastName}
                 </p>
-                <Link className="link-btn">Change Profile Photo</Link>
+                <Link className="link-btn">
+                Change Profile Photo
+                </Link>
               </div>
               <div className="details">
                 <label>Full Name </label>

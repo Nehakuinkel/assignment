@@ -40,9 +40,6 @@ function Footer() {
               <li>
                 <Link to="services">Services</Link>
               </li>
-              <li>
-                <Link to="short-codes">Short Codes</Link>
-              </li>
             </ul>
           </div>
           <div className="col-md-3 w3_footer_grid">
@@ -59,23 +56,21 @@ function Footer() {
               </li>
             </ul>
           </div>
+
           <div className="col-md-3 w3_footer_grid">
-            <h3>what in stores</h3>
+            <h3>Customer Care</h3>
             <ul className="w3_footer_grid_list">
               <li>
-                <Link to="pet">Pet Food</Link>
+                <Link to="#">Help Center</Link>
               </li>
               <li>
-                <Link to="frozen">Frozen Snacks</Link>
+                <Link to="#">How to Buy</Link>
               </li>
               <li>
-                <Link to="kitchen">Kitchen</Link>
+                <Link to="#">return and Refunds</Link>
               </li>
               <li>
-                <Link to="products">Branded Foods</Link>
-              </li>
-              <li>
-                <Link to="household">Households</Link>
+                <Link to="mail">Contact Us</Link>
               </li>
             </ul>
           </div>

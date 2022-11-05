@@ -21,6 +21,7 @@ import toast from "react-hot-toast";
 import Categories from "./components/Categories/Categories";
 import axios from "axios";
 import Search from "./components/shared/Search";
+import Products from "./components/Products";
 
 function Routing({ setSearchData, searchData }) {
   const [productDetailsData, setproductDetailsData] = useState([]);
@@ -36,24 +37,24 @@ function Routing({ setSearchData, searchData }) {
 
   // API Call To get all products....
   useEffect(() => {
-  const getAllProducts = () => {
-    axios({
-      method: "get",
-      url: productURL,
-      params: {
-        allProduct: 1,
-      },
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-      },
-    })
-      .then((response) => {
-        setProductList(response.data.data);
+    const getAllProducts = () => {
+      axios({
+        method: "get",
+        url: productURL,
+        params: {
+          allProduct: 1,
+        },
+        headers: {
+          "Api-key": process.env.REACT_APP_API_KEY,
+          "Warehouse-Id": 1,
+        },
       })
-      .catch((error) => console.error(`Error: ${error}`));
-  };
-  getAllProducts(); 
+        .then((response) => {
+          setProductList(response.data.data);
+        })
+        .catch((error) => console.error(`Error: ${error}`));
+    };
+    getAllProducts();
   }, []);
   // console.log("productList", productList);
 
@@ -115,7 +116,7 @@ function Routing({ setSearchData, searchData }) {
 
   useEffect(() => {
     getCartItemsAPI();
-  }, [token]);
+  }, [apiCart, token]);
   console.log("from carts", apiCart);
   // console.log("Cart Details", cartDetails);
 
@@ -135,7 +136,6 @@ function Routing({ setSearchData, searchData }) {
     let res = await axios(config);
     console.log(res, "Delete");
   };
-  
 
   //Update Cart quantity
   const updateCart = async (id, quantity) => {
@@ -175,24 +175,22 @@ function Routing({ setSearchData, searchData }) {
   // When Add to cart button is clicked....
   // const [cart, setCart] = useState(getItemsFromLocalStorage());
   const addToCart = (data) => {
-    console.log("apicart",apiCart)
+    console.log("apicart", apiCart);
     console.log("data", data);
     if (token) {
       // console.log("Logged In Successfully");
       const exist = apiCart.find((item) => {
-       
         return item.product.id === data.id;
       });
-      
+
       if (exist) {
-        
         toast.error("Item already exist.");
       } else {
         toast.success("Item Added to Cart.");
-      const addItemToCartApi = { ...data, orderedQuantity: 1 };
-      console.log("addItemToCartApi", addItemToCartApi);
-      // setCart([...cart, addItemToCartApi]);
-      addToCartItems(addItemToCartApi);
+        const addItemToCartApi = { ...data, orderedQuantity: 1 };
+        console.log("addItemToCartApi", addItemToCartApi);
+        // setCart([...cart, addItemToCartApi]);
+        addToCartItems(addItemToCartApi);
       }
     } else {
       console.log("Please login or signup to add products to cart.");
@@ -337,6 +335,17 @@ function Routing({ setSearchData, searchData }) {
       <Route path="signup" element={<Login />} />
       <Route path="forgetPassword" element={<ForgotPassword />} />
       <Route path="resetPassword" element={<ResetPassword />} />
+
+      <Route
+        path="products"
+        element={
+          <Products
+            productList={productList}
+            addToCart={addToCart}
+            getProductDetails={getProductDetails}
+          />
+        }
+      />
 
       <Route
         path="search"
