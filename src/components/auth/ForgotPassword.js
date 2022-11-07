@@ -1,25 +1,25 @@
-import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { axiosClient } from "../axios/Axios";
+import toast from "react-hot-toast";
 
 function ForgotPassword() {
   const { register, handleSubmit, resetField } = useForm({
     mode: "onTouched",
   });
-
+  const ForgotPasswordURL = "/api/v4/auth/forgot-password";
   const handleRegistration = (data) => {
+    const forgetPassword = async () => {
+      try{
+        await axiosClient.post(ForgotPasswordURL,data)
+        toast.success("Success: please check your email for reset code");
+      }catch(error){
+      toast.error(`Error: ${error.response.data.errors[0].message}`)
+    }
+    }
+    forgetPassword();
     resetField("Email");
-    console.log(data);
-    axios({
-      method: "post",
-      url: "https://uat.ordering-farmshop.ekbana.net/api/v4/auth/forgot-password",
-      data: {
-        email: data.Email,
-      },
-    }).then((response) => {
-      console.log(response);
-    });
   };
 
   return (
@@ -53,7 +53,7 @@ function ForgotPassword() {
                     <input
                       type="email"
                       placeholder="Email Address"
-                      {...register("Email")}
+                      {...register("email")}
                     />
 
                     <input type="submit" value="Submit" />

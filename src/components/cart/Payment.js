@@ -1,7 +1,7 @@
 import React from "react";
 // import Footer from './shared/Footer'
 // import Header from './shared/Header'
-import Navbarleft from "./shared/Navbarleft";
+import Navbarleft from "../shared/Navbarleft";
 import { Link } from "react-router-dom";
 
 function Payment() {

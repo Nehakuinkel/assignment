@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./main.css"
-function Main({ addToCart, productList }) {
+import { axiosClient } from "../axios/Axios";
+import "./main.css";
+
+function Main({ addToCart, productList, getProductDetails }) {
+  const categoryURL = "/api/v4/category";
+  const [categoryList, setCategoryList] = useState([]);
+  const getCategoriesList = async () => {
+    try {
+      const response = await axiosClient.get(categoryURL);
+      setCategoryList(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getCategoriesList();
+  }, []);
   let imglink =
     "https://uat.ordering-farmshop.ekbana.net/storage/placeholder/placeholder-web.png";
 
@@ -9,7 +25,6 @@ function Main({ addToCart, productList }) {
   const imgData = productList.filter((img) => {
     return img.images[0].imageName !== imglink;
   });
-  console.log(imgData);
 
   return (
     <div>
@@ -35,7 +50,7 @@ function Main({ addToCart, productList }) {
                     </div>
                   </div>
                 </li>
-                <li>
+                {/* <li>
                   <div className="w3l_banner_nav_right_banner1">
                     <h3>
                       Make your <span>food</span> with Spicy.
@@ -50,8 +65,8 @@ function Main({ addToCart, productList }) {
                       </Link>
                     </div>
                   </div>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <div className="w3l_banner_nav_right_banner2">
                     <h3>
                       upto <i>50%</i> off.
@@ -66,17 +81,10 @@ function Main({ addToCart, productList }) {
                       </Link>
                     </div>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
           </section>
-          <link
-            rel="stylesheet"
-            href="css/flexslider.css"
-            type="text/css"
-            media="screen"
-            property=""
-          />
         </div>
         <div className="clearfix"></div>
       </div>
@@ -134,59 +142,57 @@ function Main({ addToCart, productList }) {
       <div className="top-brands">
         <div className="container ">
           <h3 className="w3l_fruit">Hot Offers</h3>
-          <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg mainDiv">
+          <div className="agile_top_brands_grids ">
             {imgData.length > 0 ? (
               imgData.map((item) => {
                 return (
-                  <>
-                    <div
-                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd "
-                      key={item.id}
-                    >
-                      <div className="hover14 column">
-                        <div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid ">
-                          <div className="tag">
-                            <img
-                              src="../Assets/images/tag.png"
-                              alt=" "
-                              className="img-responsive"
-                            />
-                          </div>
-
-                          <div className="agile_top_brand_left_grid1">
-                            <figure>
-                              <div className="snipcart-item block">
-                                <div className="snipcart-thumb">
-                                  <a href="single.html">
-                                    <img
-                                      src={item.images[0].imageName}
-                                      alt=" "
-                                      className="img-responsive"
-                                    />
-                                  </a>
-                                  <p>{item.title}</p>
-                                  <h4>
-                                    {item.unitPrice[0].newPrice}
-                                    <span>{item.unitPrice[0].oldPrice}</span>
-                                  </h4>
-                                </div>
-                                <div className="snipcart-details ">
-                                  <input
-                                    type="button"
-                                    value="Add to cart"
-                                    className="button addtoCartBtn text-center"
-                                    onClick={() => {
-                                      addToCart(item);
-                                    }}
+                  <div className="col-md-3 top_brand_left" key={item.id}>
+                    <div className="hover14 column productCard">
+                      <div className="agile_top_brand_left_grid">
+                        <div className="agile_top_brand_left_grid1">
+                          <figure>
+                            <div className="snipcart-item block">
+                              <div className="snipcart-thumb">
+                                {/* <Link to={`/${categoryslug}/${dataProduct.id}`}> */}
+                                {/* <Link to="/single"> */}
+                                <button
+                                  type="button"
+                                  className="button text-center"
+                                  onClick={() => {
+                                    getProductDetails(item);
+                                  }}
+                                >
+                                  {" "}
+                                  <img
+                                    src={item.images[0].imageName}
+                                    alt=" "
+                                    className="img-responsive"
                                   />
-                                </div>
+                                </button>
+
+                                {/* </Link> */}
+                                <p>{item.title}</p>
+                                <h4>
+                                  ${item.unitPrice[0].oldPrice}
+                                  <span> $ {item.unitPrice[0].newPrice}</span>
+                                </h4>
                               </div>
-                            </figure>
-                          </div>
+                              <div className="snipcart-details">
+                                <input
+                                  type="button"
+                                  value="Add to cart"
+                                  className="button text-center"
+                                  onClick={() => {
+                                    addToCart(item);
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </figure>
                         </div>
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               })
             ) : (
@@ -205,48 +211,18 @@ function Main({ addToCart, productList }) {
           <div className="w3l_fresh_vegetables_grids">
             <div className="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
               <div className="w3l_fresh_vegetables_grid2">
-                <ul>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="products">All Brands</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="vegetables">Vegetables</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="vegetables">Fruits</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="drinks">Juices</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="pet">Pet Food</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="bread">Bread & Bakery</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="household">Cleaning</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="products">Spices</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="products">Dry Fruits</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true"></i>
-                    <Link to="products">Dairy Products</Link>
-                  </li>
-                </ul>
+                {categoryList.map((category) => {
+                  return (
+                    <ul>
+                      <li>
+                        <i className="fa fa-check" aria-hidden="true"></i>
+                        <Link to={`category/${category.slug}`}>
+                            {category.title}
+                          </Link>
+                      </li>
+                    </ul>
+                  );
+                })}
               </div>
             </div>
             <div className="col-md-9 w3l_fresh_vegetables_grid_right">

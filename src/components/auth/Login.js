@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
-import "../../form.css";
-import axios from "axios";
+import "./form.css";
 import toast from "react-hot-toast";
+import { axiosClient } from "../axios/Axios";
 
 function Login() {
   const navigate = useNavigate();
   const [status, setStatus] = useState();
-  const loginURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/auth/login`;
-  const signupURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/auth/signup`;
+  const loginURL = `/api/v4/auth/login`;
+  const signupURL = `/api/v4/auth/signup`;
 
   const {
     register,
@@ -22,72 +22,52 @@ function Login() {
   });
 
   const handleRegistration = (data) => {
+    const config = {
+      username: data.username,
+      password: data.password,
+      client_id: 2,
+      client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
+      grant_type: "password",
+    };
+
     if (window.location.pathname === "/login") {
       const postLogin = async () => {
         try {
-          const response = await axios({
-            method: "post",
-            url: loginURL,
-            data: {
-              username: data.username,
-              password: data.password,
-              client_id: 2,
-              client_secret: "2TJrcyMbXT6gDQXVqeSlRbOKvtTfMsuxfuK6vpey",
-              grant_type: "password",
-            },
-          });
+          const response = await axiosClient.post(loginURL, config);
           setStatus(response.status);
           localStorage.setItem("status", response.status);
-          console.log(response.status);
           localStorage.setItem("accessToken", response.data.access_token);
-          if (status === 200) {
+          // if (status === 200) {
             toast.success("Login Successful");
             navigate("/profile");
-          }
-        } catch (err) {
-          console.log(err.response.data.errors[0].message);
-          toast.error(`Error: ${err.response.data.errors[0].message}`, {
-            style: {
-              border: "1px solid #713200",
-              padding: "16px",
-              color: "Red",
-            },
-            iconTheme: {
-              primary: "#713200",
-              secondary: "#FFFAEE",
-            },
-          });
+          // }
+        } catch (error) {
+          console.log(error.response.data.errors[0].message);
+              toast.error(`Error: ${error.response.data.errors[0].message}`, {
+                style: {
+                  border: "1px solid #713200",
+                  padding: "16px",
+                  color: "Red",
+                },
+                iconTheme: {
+                  primary: "#713200",
+                  secondary: "#FFFAEE",
+                },
+              });
+            }
         }
+        postLogin();
       };
-      postLogin();
-    }
 
     if (window.location.pathname === "/signup") {
       const postSignUp = async () => {
         try {
-          const response = await axios({
-            method: "post",
-            url: signupURL,
-            data: {
-              first_name: data.first_name,
-              last_name: data.last_name,
-              email: data.Email,
-              password: data.password,
-              mobile_number: data.Telephone,
-            },
-            headers: {
-              "Api-key": process.env.REACT_APP_API_KEY,
-            },
-          });
-          setStatus(response.status);
-          console.log(response);
-          if (response.status === 201) {
+          await axiosClient.post(signupURL, data);
             toast.success("Successful Registration.");
             navigate("/login");
-          }
-        } catch (err) {
-          console.log(err.response.data.errors[0].message);
-          toast.error(`Error: ${err.response.data.errors[0].message}`, {
+        } catch (error) {
+          console.log(error.response.data.errors[0].message);
+          toast.error(`Error: ${error.response.data.errors[0].message}`, {
             style: {
               border: "1px solid #713200",
               padding: "16px",
@@ -98,17 +78,17 @@ function Login() {
               secondary: "#FFFAEE",
             },
           });
+            }
         }
-      };
+     
       postSignUp();
     }
     resetField("username");
     resetField("first_name");
     resetField("last_name");
-    resetField("Email");
-    resetField("Telephone");
+    resetField("email");
+    resetField("mobile_number");
     resetField("password");
-    console.log(data);
   };
 
   if (window.location.pathname === "/login") {
@@ -294,22 +274,22 @@ function Login() {
                       <input
                         type="email"
                         placeholder="Email Address"
-                        {...register("Email", registerOptions.Email)}
+                        {...register("email", registerOptions.Email)}
                       />
-                      {errors?.Email && (
+                      {errors?.email && (
                         <span className="error-text">
-                          {errors.Email.message}
+                          {errors.email.message}
                         </span>
                       )}
 
                       <input
                         type="text"
                         placeholder="Phone Number"
-                        {...register("Telephone", registerOptions.Telephone)}
+                        {...register("mobile_number", registerOptions.Telephone)}
                       />
-                      {errors?.Telephone && (
+                      {errors?.mobile_number && (
                         <span className="error-text">
-                          {errors.Telephone.message}
+                          {errors.mobile_number.message}
                         </span>
                       )}
 

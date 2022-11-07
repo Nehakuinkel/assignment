@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { axiosClient } from "../axios/Axios";
 
 function Navbarleft() {
+  const categoryURL = "/api/v4/category"
   const [categoryList, setCategoryList] = useState([]);
-  const getCategoriesList = () => {
-    axios({
-      method: "get",
-      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/category`,
-      // params: {
-      //   allProduct: 1,
-      // },
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-      },
-    })
-      .then((response) => {
-        setCategoryList(response.data.data);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
+  const getCategoriesList = async () => {
+    try{
+      const response = await axiosClient.get(categoryURL);
+      setCategoryList(response.data.data);
+    }catch(error){
+      console.log(error)
+    }
   };
   useEffect(() => {
     getCategoriesList();
@@ -53,7 +45,7 @@ function Navbarleft() {
                   <>
                     {subcategories.length > 0 ? (
                       <>
-                        <li className="dropdown mega-dropdown active">
+                        <li className="dropdown mega-dropdown active" key={category.id}>
                           <Link
                             to="#"
                             className="dropdown-toggle"

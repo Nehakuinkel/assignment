@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
-import axios from "axios";
-import "../../form.css";
+import "./form.css";
 import toast from "react-hot-toast";
+import { axiosClient } from "../axios/Axios";
 
 function Mail() {
-  const [status, setStatus] = useState();
-  const ContactUsURL = "https://uat.ordering-farmshop.ekbana.net/api/v4/contact-us";
+  const ContactUsURL =
+    "/api/v4/contact-us";
   const {
     register,
     handleSubmit,
@@ -17,63 +17,42 @@ function Mail() {
   } = useForm({
     mode: "onTouched",
   });
-  const haldleRegistration = (data) => {
-    // console.log(data);
+
+  const handleRegistration = (data) => {
+    console.log(data);
     const postContactUs = async () => {
       try {
-        const response = await axios({
-          method: "post",
-          url: ContactUsURL,
-          data: {
-            message: data.message,
-            subject: data.subject,
-            email: data.email,
-            name: data.fullName,
-            contact: data.mobileNo,
-          },
-          headers: {
-            "Content-Type": "application/json",
-            "Warehouse-Id": 1,
-            "Api-Key": process.env.REACT_APP_API_KEY,
-          },
-        });
-        console.log(response);
-        console.log(response.data.data.success.message);
-          setStatus(response.status)
-          if (status === 200) {
-            toast.success(`Success: ${response.data.data.success.message}`, {
-              style: {
-                border: '1px solid #713200',
-                padding: '16px',
-                color: 'green',
-              },
-              iconTheme: {
-                primary: '#713200',
-                secondary: '#FFFAEE',
-              },
-            }); 
-          }
-      } catch (err) {
-        console.log(err);
-        // console.log(err.response.data.errors[0].message)
-        toast.error(`Error: ${err.response.data.errors[0].message}`, {
+        let response = await axiosClient.post(ContactUsURL, data);
+        toast.success(`Success: ${response.data.data.success.message}`, {
           style: {
-            border: '1px solid #713200',
-            padding: '16px',
-            color: 'Red',
+            border: "1px solid #713200",
+            padding: "16px",
+            color: "green",
           },
           iconTheme: {
-            primary: '#713200',
-            secondary: '#FFFAEE',
+            primary: "#713200",
+            secondary: "#FFFAEE",
+          },
+        });
+      } catch (error) {
+        console.log(error);
+        toast.error(`Error: ${error.response.data.errors[0].message}`, {
+          style: {
+            border: "1px solid #713200",
+            padding: "16px",
+            color: "Red",
+          },
+          iconTheme: {
+            primary: "#713200",
+            secondary: "#FFFAEE",
           },
         });
       }
-      
     };
     postContactUs();
-    resetField("fullName");
+    resetField("name");
     resetField("email");
-    resetField("mobileNo");
+    resetField("contact");
     resetField("subject");
     resetField("message");
   };
@@ -131,17 +110,17 @@ function Mail() {
                 <form
                   action="#"
                   method="post"
-                  onSubmit={handleSubmit(haldleRegistration)}
+                  onSubmit={handleSubmit(handleRegistration)}
                 >
                   <div class="col-md-6 wthree_contact_left_grid">
                     <input
-                      {...register("fullName", registerOptions.Name)}
+                      {...register("name", registerOptions.Name)}
                       placeholder="Full Name"
                       type="text"
                     />
-                    {errors?.fullName && (
+                    {errors?.name && (
                       <span className="error-text">
-                        {errors.fullName.message}
+                        {errors.name.message}
                       </span>
                     )}
                     {/* {errors.fullName && <span>*Full Name is required.</span>} */}
@@ -158,14 +137,14 @@ function Mail() {
                   </div>
                   <div class="col-md-6 wthree_contact_left_grid">
                     <input
-                      {...register("mobileNo", registerOptions.Telephone)}
+                      {...register("contact", registerOptions.Telephone)}
                       placeholder="Mobile Number"
                       defaultValue=""
                       type="text"
                     />
-                    {errors?.mobileNo && (
+                    {errors?.contact && (
                       <span className="error-text">
-                        {errors.mobileNo.message}
+                        {errors.contact.message}
                       </span>
                     )}
                     <input
@@ -183,7 +162,7 @@ function Mail() {
                   </div>
                   <div class="clearfix"> </div>
                   <textarea
-                    {...register("message", {})}
+                    {...register("message")}
                     placeholder="Message"
                     defaultValue=""
                   />
@@ -199,7 +178,10 @@ function Mail() {
         </div>
         <div class="clearfix"></div>
         <div className="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14133.53388427819!2d85.44787165!3d27.6745405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1666763599308!5m2!1sen!2snp" title="JagatiPlace"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14133.53388427819!2d85.44787165!3d27.6745405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1666763599308!5m2!1sen!2snp"
+            title="JagatiPlace"
+          ></iframe>
         </div>
       </div>
     </>

@@ -109,7 +109,7 @@ function Categories({ addToCart, getProductDetails , productList   }) {
                 return (
                   <>
                     <div
-                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd"
+                      className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd product_details"
                       key={dataProduct.id}
                     >
                       <div className="hover14 column">
@@ -141,7 +141,7 @@ function Categories({ addToCart, getProductDetails , productList   }) {
                                     </button>
                                    
                                   {/* </Link> */}
-                                  <p>{dataProduct.title}</p>
+                                  <p className="productTitle">{dataProduct.title}</p>
                                   <h4>
                                     ${dataProduct.unitPrice[0].oldPrice}
                                     <span>

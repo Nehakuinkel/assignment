@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import "./product.css"
 
 function Products({productList, addToCart, getProductDetails}) {
   return (
@@ -99,23 +99,15 @@ function Products({productList, addToCart, getProductDetails}) {
         </div>
         <div className="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
           <h3 className="w3l_fruit">Products</h3>
-          <div className="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
-            {productList.map((dataProduct) => {
-              return (
-                <>
+          <div className="agile_top_brands_grids ">
+          {productList.map((dataProduct) => {
+                return (
                   <div
-                    className="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd"
+                    className="col-md-3 top_brand_left" 
                     key={dataProduct.id}
                   >
-                    <div className="hover14 column">
-                      <div className="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                        <div className="tag">
-                          <img
-                            src="../Assets/images/tag.png"
-                            alt=" "
-                            className="img-responsive"
-                          />
-                        </div>
+                    <div className="hover14 column productDetail">
+                      <div className="agile_top_brand_left_grid">
                         <div className="agile_top_brand_left_grid1">
                           <figure>
                             <div className="snipcart-item block">
@@ -128,21 +120,20 @@ function Products({productList, addToCart, getProductDetails}) {
                                   onClick={() => {
                                     getProductDetails(dataProduct);
                                   }}
-                                >  <img
+                                >
+                                  {" "}
+                                  <img
                                     src={dataProduct.images[0].imageName}
                                     alt=" "
                                     className="img-responsive"
                                   />
-                                  </button>
-                                 
+                                </button>
+
                                 {/* </Link> */}
                                 <p>{dataProduct.title}</p>
                                 <h4>
                                   ${dataProduct.unitPrice[0].oldPrice}
-                                  <span>
-                                    {" "}
-                                    $ {dataProduct.unitPrice[0].newPrice}
-                                  </span>
+                                  <span> $ {dataProduct.unitPrice[0].newPrice}</span>
                                 </h4>
                               </div>
                               <div className="snipcart-details">
@@ -161,12 +152,9 @@ function Products({productList, addToCart, getProductDetails}) {
                       </div>
                     </div>
                   </div>
-                </>
-              );
-            })}
-           
-
-            <div className="clearfix"> </div>
+                );
+              })
+          }
           </div>
         </div>
       </div>

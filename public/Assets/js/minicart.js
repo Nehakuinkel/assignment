@@ -1346,9 +1346,9 @@ exports.render = function(str, options){
 exports.renderFile = function(path, options, fn){
   var key = path + ':string';
 
-  if ('function' == typeof options) {
-    fn = options, options = {};
-  }
+  // if ('function' == typeof options) {
+  //   fn = options, options = {};
+  // }
 
   options.filename = path;
 
@@ -1464,7 +1464,7 @@ exports.sort = function(obj){
 
 exports.sort_by = function(obj, prop){
   return Object.create(obj).sort(function(a, b){
-    a = a[prop], b = b[prop];
+    // a = a[prop], b = b[prop];
     if (a > b) return 1;
     if (a < b) return -1;
     return 0;

@@ -1,7 +1,8 @@
-.mainDiv{
-    margin:3px;
+.mainContentItem{
+margin-bottom: 3rem;
 }
-.items-display{
-    margin-left: 5rem;
-    background-color: brown;
+.productCard{
+    margin: 0.4rem;
+    max-height: 500px;
+    min-height: 449px;
 }

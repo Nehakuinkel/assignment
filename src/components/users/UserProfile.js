@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./profile.css";
 
-function UserProfile({ token, setToken }) {
-  const navigate = useNavigate();
+function UserProfile({ token }) {
   const [userList, setUserList] = useState([]);
   let userURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/profile/show`;
   const getProfile = async () => {
@@ -59,9 +57,6 @@ function UserProfile({ token, setToken }) {
                 <p>
                   {userList.firstName} {userList.lastName}
                 </p>
-                <Link className="link-btn">
-                Change Profile Photo
-                </Link>
               </div>
               <div className="details">
                 <label>Full Name </label>
@@ -72,11 +67,6 @@ function UserProfile({ token, setToken }) {
                 <p>{userList.email} </p>
                 <label>Contact Number</label>
                 <p> {userList.mobileNumber} </p>
-                <div className="prof-btn">
-                  <Link className="link-btn">
-                    <button>Update Profile</button>
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

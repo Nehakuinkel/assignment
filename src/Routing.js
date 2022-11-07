@@ -2,61 +2,52 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from "./components/shared/Main";
 import React from "react";
-import About from "./components/General/About";
-import Checkout from "./components/Checkout";
-import Events from "./components/General/Events";
-import Faqs from "./components/General/Faqs";
-import Login from "./components/Users/Login";
-import Mail from "./components/Users/Mail";
-import Payment from "./components/Payment";
-import Privacy from "./components/General/Privacy";
-import Services from "./components/General/Services";
-import Single from "./components/Single";
+import About from "./components/general/About";
+import Checkout from "./components/cart/Checkout";
+import Events from "./components/general/Events";
+import Faqs from "./components/general/Faqs";
+import Login from "./components/auth/Login";
+import Mail from "./components/auth/Mail";
+import Payment from "./components/cart/Payment";
+import Privacy from "./components/general/Privacy";
+import Services from "./components/general/Services";
+import Single from "./components/cart/Single";
 import Errorpage from "./components/shared/Errorpage";
-import ForgotPassword from "./components/Users/ForgotPassword";
-import Cart from "./components/Cart";
-import ResetPassword from "./components/Users/ResetPassword";
-import UserProfile from "./components/UserProfile";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import Cart from "./components/cart/Cart";
+import ResetPassword from "./components/auth/ResetPassword";
+import UserProfile from "./components/users/UserProfile";
 import toast from "react-hot-toast";
-import Categories from "./components/Categories/Categories";
-import axios from "axios";
+import Categories from "./components/products/Categories";
 import Search from "./components/shared/Search";
-import Products from "./components/Products";
+import Products from "./components/products/Products";
+import { axiosClient } from "./components/axios/Axios";
 
-function Routing({ setSearchData, searchData }) {
+function Routing({ searchData }) {
   const [productDetailsData, setproductDetailsData] = useState([]);
   const [cartDetails, setCartDetails] = useState([]);
   const [apiCart, setapiCart] = useState([]);
+  const [bool, setBool] = useState(false);
   const [token, setToken] = useState();
   const navigate = useNavigate();
   const [productList, setProductList] = useState([]);
-  let productURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/product`;
-  let addToCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product`;
-  //let deleteCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product`;
-  let getCartURL = `https://uat.ordering-farmshop.ekbana.net/api/v4/cart`;
+
+  let productURL = `/api/v4/product?allProduct=1`;
+  let addToCartURL = `/api/v4/cart-product`;
+  let getCartURL = `/api/v4/cart`;
 
   // API Call To get all products....
   useEffect(() => {
-    const getAllProducts = () => {
-      axios({
-        method: "get",
-        url: productURL,
-        params: {
-          allProduct: 1,
-        },
-        headers: {
-          "Api-key": process.env.REACT_APP_API_KEY,
-          "Warehouse-Id": 1,
-        },
-      })
-        .then((response) => {
-          setProductList(response.data.data);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
+    const getAllProducts = async () => {
+      try {
+        const response = await axiosClient.get(productURL);
+        setProductList(response.data.data);
+      } catch (error) {
+        toast.error(error.message);
+      }
     };
     getAllProducts();
   }, []);
-  // console.log("productList", productList);
 
   // set Access Token to local Storage
   useEffect(() => {
@@ -75,110 +66,82 @@ function Routing({ setSearchData, searchData }) {
 
   // Api call to add products to cart
   const addToCartItems = async (cartData) => {
-    let response = await axios({
-      method: "post",
-      url: addToCartURL,
-      data: {
-        productId: cartData.id,
-        priceId: cartData.unitPrice[0].id,
-        quantity: cartData.orderedQuantity,
-        note: "testing",
-      },
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    //console.log("response from add cart", response);
-    // if (response.status === 200) {
-    //   toast.success("Products add to cart");
-    // }
+    const config = {
+      productId: cartData.id,
+      priceId: cartData.unitPrice[0].id,
+      quantity: cartData.orderedQuantity,
+      note: "testing",
+    };
+    try {
+      let response = await axiosClient.post(addToCartURL, config, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.status === 200) {
+        setBool(!bool);
+        // toast.success("Products add to cart");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  
 
   // API call to get cart items
   const getCartItemsAPI = async () => {
-    let response = await axios({
-      method: "get",
-      url: getCartURL,
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("response from add cart", response);
-    if (response.status === 200) {
-      setapiCart(response.data.data.cartProducts);
-      setCartDetails(response.data.data);
+    try {
+      let response = await axiosClient.get(getCartURL, {
+        headers: { Authorization: `Bearer ${token}`},
+      });
+        setapiCart(response.data.data.cartProducts);
+        setCartDetails(response.data.data);
+      
+    } catch (error) {
+      console.log(error);
     }
   };
-
   useEffect(() => {
-    getCartItemsAPI();
-  }, [apiCart, token]);
-  console.log("from carts", apiCart);
-  // console.log("Cart Details", cartDetails);
+      getCartItemsAPI();
+  }, [bool,token]);
 
   //Delete Items From cart API
   const deleteCartItems = async (data) => {
-    let config = {
-      method: "delete",
-      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product/${data}`,
-
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    };
-    let res = await axios(config);
-    console.log(res, "Delete");
+    let deleteURL = `api/v4/cart-product/${data}`;
+    try {
+      await axiosClient.delete(deleteURL, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBool(!bool);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Update Cart quantity
   const updateCart = async (id, quantity) => {
-    let response = await axios({
-      method: "patch",
-      url: `https://uat.ordering-farmshop.ekbana.net/api/v4/cart-product/${id}`,
-      data: {
-        quantity: quantity,
-        note: "hello",
-      },
-      headers: {
-        "Api-key": process.env.REACT_APP_API_KEY,
-        "Warehouse-Id": 1,
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("response from update cart", response);
+    let updateURL = `/api/v4/cart-product/${id}`;
+    const data = {
+      quantity: quantity,
+      note: "hello",
+    };
+    try {
+      await axiosClient.patch(updateURL, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBool(!bool);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Get Details Of a single product
   const getProductDetails = (productDetail) => {
-    console.log(productDetail);
-    setproductDetailsData(productDetail);
-    navigate("/single");
+        setproductDetailsData(productDetail);
+        navigate("/productDetails");
   };
 
-  // Get Items added to cart From local storage
-  // const getItemsFromLocalStorage = () => {
-  //   let output = localStorage.getItem("addedItems");
-  //   if (output) {
-  //     return JSON.parse(output);
-  //   } else {
-  //     return [];
-  //   }
-  // };
-
-  // When Add to cart button is clicked....
-  // const [cart, setCart] = useState(getItemsFromLocalStorage());
+  //add to cart handler
   const addToCart = (data) => {
-    console.log("apicart", apiCart);
-    console.log("data", data);
     if (token) {
-      // console.log("Logged In Successfully");
       const exist = apiCart.find((item) => {
         return item.product.id === data.id;
       });
@@ -197,71 +160,35 @@ function Routing({ setSearchData, searchData }) {
       navigate("/login");
     }
   };
-  // console.log(cart);
 
   // Increment Handler
   const increment = (id, quantity) => {
     updateCart(id, quantity + 1);
-    // const updatedData = cart.map((item) => {
-    //   if (item.id === id) {
-    //     return { ...item, orderedQuantity: item.orderedQuantity + 1 };
-    //   } else {
-    //     return item;
-    //   }
-    // });
-    // setCart(updatedData);
-    // console.log(cart);
   };
 
   //decrement Handler
   const decrement = (id, quantity) => {
+    if ( quantity !== 1) {
     updateCart(id, quantity - 1);
-    // let updateItems = cart.map((item) => {
-    //   if (item.id === id && item.orderedQuantity > 1) {
-    //     return { ...item, orderedQuantity: item.orderedQuantity - 1 };
-    //   } else {
-    //     return item;
-    //   }
-    // });
-    // setCart(updateItems);
+    }
   };
 
   // To Remove Item from cart
   const removeItem = (id) => {
     deleteCartItems(id);
-    // console.log("Delete Items", id)
-    // const deleteItem = cart.filter((item) => {
-    //   return item.id !== id;
-    // });
-    // setCart(deleteItem);
   };
 
-  // // To Count Total from cart
-  // const total = cart.reduce((acc, val) => {
-  //   acc += val.orderedQuantity * val.unitPrice[0].newPrice;
-  //   return acc;
-  // }, 0);
-
-  // Total for Api cart Items
-  const total = apiCart.reduce((acc, val) => {
-    acc += val.quantity * val.price;
-    return acc;
-  }, 0);
-
-  //To add Items to Cart in Local Storage
-  // useEffect(() => {
-  //   localStorage.setItem("addedItems", JSON.stringify(cart));
-  // }, [cart]);
 
   return (
     <Routes>
       <Route
+        exact
         path="/"
         element={
           <Main
             addToCart={addToCart}
             productList={productList}
-            setproductDetailsData={setproductDetailsData}
+            getProductDetails={getProductDetails}
           />
         }
       />
@@ -275,20 +202,21 @@ function Routing({ setSearchData, searchData }) {
 
       {/* Dynamic Routes */}
       <Route
+        exact
         path="category/:categoryslug"
         element={
           <Categories
             addToCart={addToCart}
             getProductDetails={getProductDetails}
             productList={productList}
-            setproductDetailsData={setproductDetailsData}
           />
         }
       />
-
+        
       {/* Route To get Single product Details */}
       <Route
-        path="single"
+        /* path="product/:productSlug" */
+        path="productDetails"
         element={
           <Single
             productDetailsData={productDetailsData}
@@ -301,14 +229,11 @@ function Routing({ setSearchData, searchData }) {
         path="cart"
         element={
           <Cart
-            apiCart={apiCart}
-            cartDetails={cartDetails}
-            /* cart={cart}
-            setCart={setCart} */
+             apiCart={apiCart}
+            cartDetails={cartDetails} 
             increment={increment}
             decrement={decrement}
             removeItem={removeItem}
-            total={total}
             token={token}
           />
         }
@@ -319,18 +244,17 @@ function Routing({ setSearchData, searchData }) {
         element={
           <Checkout
             token={token}
-            setToken={setToken}
+            setToken={setToken} 
             apiCart={apiCart}
             cartDetails={cartDetails}
             increment={increment}
             decrement={decrement}
             removeItem={removeItem}
-            total={total}
           />
         }
       />
 
-      {/* Users Route */}
+      {/* Auth Route */}
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Login />} />
       <Route path="forgetPassword" element={<ForgotPassword />} />
@@ -366,11 +290,6 @@ function Routing({ setSearchData, searchData }) {
         element={
           <UserProfile
             token={token}
-            setToken={setToken}
-            addToCart={addToCart}
-            getProductDetails={getProductDetails}
-            productList={productList}
-            setproductDetailsData={setproductDetailsData}
           />
         }
       />

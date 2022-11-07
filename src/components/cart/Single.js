@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./single.css";
+import parse from 'html-react-parser';
 
 function Single({ productDetailsData, addToCart }) {
-  console.log("addToCart", addToCart)
   return (
     <>
       <div className="products-breadcrumb">
@@ -64,7 +64,7 @@ function Single({ productDetailsData, addToCart }) {
                     Description coming soon.
                   </p>
                 ) : (
-                  <p>{productDetailsData.description}</p>
+                 <p>{parse(productDetailsData.description)} </p> 
                 )}
               </div>
               <div className="snipcart-item block">
@@ -95,7 +95,7 @@ function Single({ productDetailsData, addToCart }) {
       </div>
       {/* <!-- //banner -->
 <!-- brands --> */}
-      <div className="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
+      {/* <div className="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
         <div className="container">
           <h3>Popular Brands</h3>
           <div className="w3ls_w3l_banner_nav_right_grid1">
@@ -910,7 +910,7 @@ function Single({ productDetailsData, addToCart }) {
             <div className="clearfix"> </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

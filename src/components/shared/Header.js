@@ -4,38 +4,32 @@ import "./Header.css";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-function Header({setSearchData,searchData}) {
+function Header({ setSearchData }) {
   const navigate = useNavigate();
   const [token, setToken] = useState();
-  const {
-    register,
-    handleSubmit,
-    resetField,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, resetField } = useForm({
     mode: "onTouched",
   });
   const handleRegistration = (data) => {
-   setSearchData(data);
-   navigate("/search")
-   resetField('search')
-  }
-  console.log(searchData)
+    setSearchData(data);
+    navigate("/search");
+    resetField("search");
+  };
 
   useEffect(() => {
     setToken(localStorage.getItem("accessToken"));
-  }); 
+  });
 
   const logout = () => {
     setToken(localStorage.clear());
-    toast.success("Logout Successfully.")
+    toast.success("Logout Successfully.");
     navigate("/");
   };
   return (
     <div>
       <div className="agileits_header">
         <div className="w3l_offers">
-          <Link to="products">Today's special Offers !</Link>
+          <Link to="/">Today's special Offers !</Link>
         </div>
         <div className="w3l_search">
           <form
@@ -79,14 +73,16 @@ function Header({setSearchData,searchData}) {
                   <span className="caret"></span>
                 </Link>
 
-                <div className="mega-dropdown-menu">
-                  <div className="w3ls_vegetables">
-                    <ul className="dropdown-menu drp-mnu">
+                <div >
+                  <div className="dropbtn">
+                    <ul className="dropdown-content">
                       <li>
-                        <button className="user-btn" onClick={() => navigate("/profile")}>Profile</button>
-                      </li>
-                      <li>
-                      <button className="user-btn" onClick={() => navigate("/order")}>Order List</button>
+                        <button
+                          className="user-btn"
+                          onClick={() => navigate("/profile")}
+                        >
+                          Profile
+                        </button>
                       </li>
                       <li>
                         <button
@@ -115,9 +111,9 @@ function Header({setSearchData,searchData}) {
                   <span className="caret"></span>
                 </Link>
 
-                <div className="mega-dropdown-menu">
-                  <div className="w3ls_vegetables">
-                    <ul className="dropdown-menu drp-mnu">
+                <div>
+                  <div className="dropbtn">
+                    <ul className="dropdown-content text-center">
                       <li>
                         <Link to="/login">Login</Link>
                       </li>
@@ -172,13 +168,16 @@ function Header({setSearchData,searchData}) {
           <div className="w3ls_logo_products_left1">
             <ul className="phone_email">
               <li>
-                <i className="fa fa-phone" aria-hidden="true"></i>(+0123) 234
+                <i className="fa fa-phone" aria-hidden="true"></i>
+                <a href="tel:(+0123) 234">(+0123) 234</a>
                 567
               </li>
               <li>
                 <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                <Link to="mailto:store@grocery.com">store@grocery.com</Link>
-              </li>
+                <a href="mailto:store@grocery.com">
+                  store@grocery.com
+                </a>
+              </li> 
             </ul>
           </div>
           <div className="clearfix"> </div>
