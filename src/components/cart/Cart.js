@@ -45,7 +45,7 @@ function Cart({
               {apiCart.map((item, index) => {
                 return (
                   <>
-                    <div className="cartItems mb-3">
+                    <div className="cartItems mb-3" key={item.id}>
                       <h4>{index + 1}</h4>
                       <span className="cartName">{item.product.title}</span>
                       <img
@@ -100,7 +100,7 @@ function Cart({
                   </div>
                   <div className="checkoutBtn">
                     <Link to="/checkout">
-                      <button type="button" class="btn btn-danger">
+                      <button type="button" className="btn btn-danger">
                         Proceed to Checkout---
                       </button>
                     </Link>

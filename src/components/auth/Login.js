@@ -39,7 +39,7 @@ function Login() {
           localStorage.setItem("accessToken", response.data.access_token);
           // if (status === 200) {
             toast.success("Login Successful");
-            navigate("/profile");
+            navigate("/");
           // }
         } catch (error) {
           console.log(error.response.data.errors[0].message);

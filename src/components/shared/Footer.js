@@ -70,7 +70,7 @@ function Footer() {
                 <Link to="#">return and Refunds</Link>
               </li>
               <li>
-                <Link to="mail">Contact Us</Link>
+                <Link to="contact">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -105,8 +105,8 @@ function Footer() {
                 <img src="images/card.png" alt=" " className="img-responsive" />
               </div>
             </div>
-            <div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-              <div class="w3_footer_grid_bottom">
+            <div className="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+              <div className="w3_footer_grid_bottom">
                 <h5>connect with us</h5>
                 <ul className="agileits_social_icons">
                   <li>

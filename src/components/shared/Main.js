@@ -213,7 +213,7 @@ function Main({ addToCart, productList, getProductDetails }) {
               <div className="w3l_fresh_vegetables_grid2">
                 {categoryList.map((category) => {
                   return (
-                    <ul>
+                    <ul key={category.id}>
                       <li>
                         <i className="fa fa-check" aria-hidden="true"></i>
                         <Link to={`category/${category.slug}`}>

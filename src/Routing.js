@@ -7,7 +7,7 @@ import Checkout from "./components/cart/Checkout";
 import Events from "./components/general/Events";
 import Faqs from "./components/general/Faqs";
 import Login from "./components/auth/Login";
-import Mail from "./components/auth/Mail";
+import Mail from "./components/form/Mail";
 import Payment from "./components/cart/Payment";
 import Privacy from "./components/general/Privacy";
 import Services from "./components/general/Services";
@@ -35,6 +35,10 @@ function Routing({ searchData }) {
   let productURL = `/api/v4/product?allProduct=1`;
   let addToCartURL = `/api/v4/cart-product`;
   let getCartURL = `/api/v4/cart`;
+   // set Access Token to local Storage
+   useEffect(() => {
+    setToken(localStorage.getItem("accessToken"));
+  });
 
   // API Call To get all products....
   useEffect(() => {
@@ -49,10 +53,7 @@ function Routing({ searchData }) {
     getAllProducts();
   }, []);
 
-  // set Access Token to local Storage
-  useEffect(() => {
-    setToken(localStorage.getItem("accessToken"));
-  });
+  
 
   // Data From Search Input
   const filteredSearch =
@@ -100,7 +101,9 @@ function Routing({ searchData }) {
     }
   };
   useEffect(() => {
+    if(token){
       getCartItemsAPI();
+    }
   }, [bool,token]);
 
   //Delete Items From cart API
@@ -156,7 +159,7 @@ function Routing({ searchData }) {
         addToCartItems(addItemToCartApi);
       }
     } else {
-      console.log("Please login or signup to add products to cart.");
+      toast.error("Please login or signup to add products to cart.");
       navigate("/login");
     }
   };
@@ -282,7 +285,7 @@ function Routing({ searchData }) {
           />
         }
       />
-      <Route path="mail" element={<Mail />} />
+      <Route path="contact" element={<Mail />} />
       <Route path="payment" element={<Payment />} />
 
       <Route

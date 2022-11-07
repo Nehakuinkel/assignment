@@ -106,7 +106,7 @@ function Header({ setSearchData }) {
               <li className="dropdown profile_details_drop">
                 <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
                   <i className="fa fa-user" aria-hidden="true">
-                    <h6>Avatar</h6>
+                    <h6>Home</h6>
                   </i>
                   <span className="caret"></span>
                 </Link>
@@ -130,7 +130,7 @@ function Header({ setSearchData }) {
 
         <div className="w3l_header_right1">
           <h2>
-            <Link to="mail">Contact Us</Link>
+            <Link to="contact">Contact Us</Link>
           </h2>
         </div>
         <div className="clearfix"> </div>

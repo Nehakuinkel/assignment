@@ -40,12 +40,11 @@ function Navbarleft() {
             <ul className="nav navbar-nav nav_1">
               {categoryList.map((category) => {
                 let subcategories = category.subcategories;
-
                 return (
                   <>
                     {subcategories.length > 0 ? (
                       <>
-                        <li className="dropdown mega-dropdown active" key={category.id}>
+                        <li className="dropdown mega-dropdown active"key={category.id} >
                           <Link
                             to="#"
                             className="dropdown-toggle"
@@ -60,7 +59,7 @@ function Navbarleft() {
                                 {subcategories.map((subcat) => {
                                   return (
                                     <>
-                                      <li>
+                                      <li key={subcat.id}>
                                         <Link to={`category/${subcat.slug}`}>
                                           {subcat.title}
                                         </Link>

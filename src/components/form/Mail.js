@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { registerOptions } from "../shared/formValidate";
-import "./form.css";
+import "../auth/form.css";
 import toast from "react-hot-toast";
 import { axiosClient } from "../axios/Axios";
 

@@ -5,7 +5,7 @@ export const axiosClient = axios.create({
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      "Api-key": `3uxpudnPFywb4AYZjjpbhOHRV3YMTNscyRF4AiVZi2go6brJMx`,
+      "Api-key": "3uxpudnPFywb4AYZjjpbhOHRV3YMTNscyRF4AiVZi2go6brJMx",
       "Warehouse-Id": 1,   
     },
   });
