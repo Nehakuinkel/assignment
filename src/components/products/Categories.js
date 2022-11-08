@@ -125,7 +125,7 @@ function Categories({ addToCart, getProductDetails , productList   }) {
                             <figure>
                               <div className="snipcart-item block">
                                 <div className="snipcart-thumb">
-                                  {/* <Link to={`/${categoryslug}/${dataProduct.id}`}> */}
+                                  {/* <Link to={`product/${dataProduct.id}/${dataProduct.slug}`}> */}
                                   {/* <Link to="/single"> */}
                                   <button
                                     type="button"

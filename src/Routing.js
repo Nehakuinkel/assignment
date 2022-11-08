@@ -11,7 +11,7 @@ import Mail from "./components/form/Mail";
 import Payment from "./components/cart/Payment";
 import Privacy from "./components/general/Privacy";
 import Services from "./components/general/Services";
-import Single from "./components/cart/Single";
+import Single from "./components/products/Single";
 import Errorpage from "./components/shared/Errorpage";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import Cart from "./components/cart/Cart";
@@ -35,8 +35,8 @@ function Routing({ searchData }) {
   let productURL = `/api/v4/product?allProduct=1`;
   let addToCartURL = `/api/v4/cart-product`;
   let getCartURL = `/api/v4/cart`;
-   // set Access Token to local Storage
-   useEffect(() => {
+  // set Access Token to local Storage
+  useEffect(() => {
     setToken(localStorage.getItem("accessToken"));
   });
 
@@ -52,8 +52,6 @@ function Routing({ searchData }) {
     };
     getAllProducts();
   }, []);
-
-  
 
   // Data From Search Input
   const filteredSearch =
@@ -85,26 +83,24 @@ function Routing({ searchData }) {
       console.log(error);
     }
   };
-  
 
   // API call to get cart items
   const getCartItemsAPI = async () => {
     try {
       let response = await axiosClient.get(getCartURL, {
-        headers: { Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
       });
-        setapiCart(response.data.data.cartProducts);
-        setCartDetails(response.data.data);
-      
+      setapiCart(response.data.data.cartProducts);
+      setCartDetails(response.data.data);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    if(token){
+    if (token) {
       getCartItemsAPI();
     }
-  }, [bool,token]);
+  }, [bool, token]);
 
   //Delete Items From cart API
   const deleteCartItems = async (data) => {
@@ -138,8 +134,8 @@ function Routing({ searchData }) {
 
   //Get Details Of a single product
   const getProductDetails = (productDetail) => {
-        setproductDetailsData(productDetail);
-        navigate("/productDetails");
+    setproductDetailsData(productDetail);
+    navigate("/productDetails");
   };
 
   //add to cart handler
@@ -171,8 +167,8 @@ function Routing({ searchData }) {
 
   //decrement Handler
   const decrement = (id, quantity) => {
-    if ( quantity !== 1) {
-    updateCart(id, quantity - 1);
+    if (quantity !== 1) {
+      updateCart(id, quantity - 1);
     }
   };
 
@@ -180,7 +176,6 @@ function Routing({ searchData }) {
   const removeItem = (id) => {
     deleteCartItems(id);
   };
-
 
   return (
     <Routes>
@@ -215,11 +210,11 @@ function Routing({ searchData }) {
           />
         }
       />
-        
+
       {/* Route To get Single product Details */}
       <Route
-        /* path="product/:productSlug" */
-        path="productDetails"
+        /* path="product/:id/:productSlug" */
+         path="productDetails"
         element={
           <Single
             productDetailsData={productDetailsData}
@@ -232,8 +227,8 @@ function Routing({ searchData }) {
         path="cart"
         element={
           <Cart
-             apiCart={apiCart}
-            cartDetails={cartDetails} 
+            apiCart={apiCart}
+            cartDetails={cartDetails}
             increment={increment}
             decrement={decrement}
             removeItem={removeItem}
@@ -247,7 +242,7 @@ function Routing({ searchData }) {
         element={
           <Checkout
             token={token}
-            setToken={setToken} 
+            setToken={setToken}
             apiCart={apiCart}
             cartDetails={cartDetails}
             increment={increment}
@@ -288,14 +283,7 @@ function Routing({ searchData }) {
       <Route path="contact" element={<Mail />} />
       <Route path="payment" element={<Payment />} />
 
-      <Route
-        path="profile"
-        element={
-          <UserProfile
-            token={token}
-          />
-        }
-      />
+      <Route path="profile" element={<UserProfile token={token} />} />
       <Route path="*" element={<Errorpage />} />
     </Routes>
   );

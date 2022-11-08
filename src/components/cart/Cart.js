@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { axiosClient } from "../axios/Axios";
 import "./cart.css";
 
 function Cart({
@@ -9,7 +10,21 @@ function Cart({
   decrement,
   removeItem,
   token,
-}) {
+})
+ 
+{
+  // let params = useParams()
+
+  // const singleProduct = async () => {
+  //   try{
+  //     let response = await axiosClient.get(`/api/v4/product/${params.id}`);
+  //     console.log(response);
+  //   }catch(error){
+  //     console.log(error)
+  //   }
+  // }
+  // console.log(singleProduct);
+
   return (
     <>
       {/* <Header/> */}
@@ -72,7 +87,7 @@ function Cart({
                         </button>
                       </div>
                       <p className="price">{item.price}</p>
-                      <button onClick={() => removeItem(item.id)}>
+                      <button className = " btn btn-danger" onClick={() => removeItem(item.id)}>
                         Remove
                       </button>
                     </div>
